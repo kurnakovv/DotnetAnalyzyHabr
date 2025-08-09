@@ -21,6 +21,12 @@ namespace DotnetAnalyzyHabr.WebAPI.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            List<User> users = [];
+
+            var item = users.FirstOrDefault(x => x.Name == "Vasia");
+
+            var a = item.Name;
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -29,5 +35,10 @@ namespace DotnetAnalyzyHabr.WebAPI.Controllers
             })
             .ToArray();
         }
+    }
+
+    public class User
+    {
+        public required string Name { get; set; }
     }
 }
