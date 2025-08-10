@@ -4,7 +4,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors> <!-- Теперь отключаем (так же можно просто не указывать) -->
+    <WarningsAsErrors>CS8602,CS8603</WarningsAsErrors> <!-- Разделитель кодов через запятую, так как и в WarningsNotAsErrors -->
   </PropertyGroup>
 
 </Project>

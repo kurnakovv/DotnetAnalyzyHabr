@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Linq.Expressions;
 
 namespace DotnetAnalyzyHabr.WebAPI.Controllers
 {
@@ -23,9 +24,47 @@ namespace DotnetAnalyzyHabr.WebAPI.Controllers
         {
             List<User> users = [];
 
-            var item = users.FirstOrDefault(x => x.Name == "Vasia");
+            //User item = users.FirstOrDefault(x => x.Name == "Vasia");
+            //var a = item.Name;
 
-            var a = item.Name;
+//            switch (expression)
+//            {
+//#pragma warning disable CS8602
+//                case x:
+//                    // ~5к строчек кода...
+//                    break;
+//#pragma warning restore CS8602
+//                case y:
+//                    // ~5к строчек кода...
+//                    break;
+//#pragma warning disable CS8602
+//                default:
+//                    // ~5к строчек кода...
+//                    break;
+//#pragma warning disable CS8602
+//            }
+
+            //            var days = 2;
+            //            switch (days)
+            //            {
+            //#pragma warning disable CS8602
+            //                case 1:
+            //                    // ~5к строчек кода
+            //                    User? item1 = users.FirstOrDefault(x => x.Name == "Vasia");
+            //                    var a1 = item1.Name;
+            //                    break;
+            //#pragma warning restore CS8602
+            //                case 2:
+            //                    // ~5к строчек кода
+            //                    User item2 = users.FirstOrDefault(x => x.Name == "Vasia");
+            //                    var a2 = item2.Name;
+            //                    break;
+            //#pragma warning disable CS8602
+            //                default:
+            //                    // ~5к строчек кода
+            //                    break;
+            //#pragma warning disable CS8602
+            //            }
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

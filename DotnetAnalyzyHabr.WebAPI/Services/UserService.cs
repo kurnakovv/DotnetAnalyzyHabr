@@ -1,4 +1,4 @@
-﻿namespace DotnetAnalyzyHabr.BL;
+﻿namespace DotnetAnalyzyHabr.WebAPI.Services;
 
 public class UserService
 {
