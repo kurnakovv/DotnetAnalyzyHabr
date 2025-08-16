@@ -1,83 +1,82 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
 
-namespace DotnetAnalyzyHabr.WebAPI.Controllers
+namespace DotnetAnalyzyHabr.WebAPI.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class WeatherForecastController : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    private static readonly string[] Summaries = new[]
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
-        }
-
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            List<User> users = [];
-
-            //User item = users.FirstOrDefault(x => x.Name == "Vasia");
-            //var a = item.Name;
-
-//            switch (expression)
-//            {
-//#pragma warning disable CS8602
-//                case x:
-//                    // ~5к строчек кода...
-//                    break;
-//#pragma warning restore CS8602
-//                case y:
-//                    // ~5к строчек кода...
-//                    break;
-//#pragma warning disable CS8602
-//                default:
-//                    // ~5к строчек кода...
-//                    break;
-//#pragma warning disable CS8602
-//            }
-
-            //            var days = 2;
-            //            switch (days)
-            //            {
-            //#pragma warning disable CS8602
-            //                case 1:
-            //                    // ~5к строчек кода
-            //                    User? item1 = users.FirstOrDefault(x => x.Name == "Vasia");
-            //                    var a1 = item1.Name;
-            //                    break;
-            //#pragma warning restore CS8602
-            //                case 2:
-            //                    // ~5к строчек кода
-            //                    User item2 = users.FirstOrDefault(x => x.Name == "Vasia");
-            //                    var a2 = item2.Name;
-            //                    break;
-            //#pragma warning disable CS8602
-            //                default:
-            //                    // ~5к строчек кода
-            //                    break;
-            //#pragma warning disable CS8602
-            //            }
-
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
+    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    {
+        _logger = logger;
     }
 
-    public class User
+    [HttpGet(Name = "GetWeatherForecast")]
+    public IEnumerable<WeatherForecast> Get()
     {
-        public required string Name { get; set; }
+        List<User> users = [];
+
+        //User item = users.FirstOrDefault(x => x.Name == "Vasia");
+        //var a = item.Name;
+
+        //            switch (expression)
+        //            {
+        //#pragma warning disable CS8602
+        //                case x:
+        //                    // ~5к строчек кода...
+        //                    break;
+        //#pragma warning restore CS8602
+        //                case y:
+        //                    // ~5к строчек кода...
+        //                    break;
+        //#pragma warning disable CS8602
+        //                default:
+        //                    // ~5к строчек кода...
+        //                    break;
+        //#pragma warning disable CS8602
+        //            }
+
+        //            var days = 2;
+        //            switch (days)
+        //            {
+        //#pragma warning disable CS8602
+        //                case 1:
+        //                    // ~5к строчек кода
+        //                    User? item1 = users.FirstOrDefault(x => x.Name == "Vasia");
+        //                    var a1 = item1.Name;
+        //                    break;
+        //#pragma warning restore CS8602
+        //                case 2:
+        //                    // ~5к строчек кода
+        //                    User item2 = users.FirstOrDefault(x => x.Name == "Vasia");
+        //                    var a2 = item2.Name;
+        //                    break;
+        //#pragma warning disable CS8602
+        //                default:
+        //                    // ~5к строчек кода
+        //                    break;
+        //#pragma warning disable CS8602
+        //            }
+
+        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        {
+            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        })
+        .ToArray();
     }
+}
+
+public class User
+{
+    public required string Name { get; set; }
 }

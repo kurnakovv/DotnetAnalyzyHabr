@@ -98,9 +98,19 @@ dotnet_diagnostic.CS8825.severity = error # Return value must be non-null becaus
 dotnet_diagnostic.CS8847.severity = error # The switch expression does not handle some null inputs (it is not exhaustive). However, a pattern with a 'when' clause might successfully match this value.
 ## *END* NullReferenceException (NRE)
 
+dotnet_diagnostic.IDE0055.severity = warning
+trim_trailing_whitespace = true
+
+# Only enforce file-scoped namespace declarations
+
+# https://stackoverflow.com/questions/76811069/change-the-severity-of-all-stylecop-rules-using-editorconfig
+
+csharp_style_namespace_declarations = file_scoped:error
+
+# Disable *style* analyzer diagnostics, but keep formatting
 
 
-# Xml project files
+# # Xml project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,nativeproj,locproj}]
 indent_size = 2
 

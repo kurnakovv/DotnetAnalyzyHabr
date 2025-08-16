@@ -2,15 +2,14 @@
 
 public class UserService
 {
-    [Obsolete("Use X instead of this method")]
-    public string GetName()
+    public string? GetName()
     {
         List<User> users = [];
-        User item = users.FirstOrDefault(x => x.Name == "Vasia");
-        return item.Name;
+        User? item = users.FirstOrDefault(x => x.Name == "Vasia");
+        return item?.Name;
     }
 
-    public string M1()
+    public string? M1()
     {
         return GetName();
     }
