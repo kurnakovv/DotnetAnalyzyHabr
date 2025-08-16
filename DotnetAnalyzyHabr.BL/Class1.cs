@@ -1,10 +1,9 @@
-﻿namespace DotnetAnalyzyHabr.BL
-{
-    /// <summary>
-    /// Class1.
-    /// </summary>
-    public class Class1
-    {
+﻿namespace DotnetAnalyzyHabr.BL;
 
-    }
+/// <summary>
+/// Class1.
+/// </summary>
+public class Class1
+{
+
 }
