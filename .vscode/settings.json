@@ -3,7 +3,7 @@
     "commands": [
       {
         "match": "\\.cs$",
-        "cmd": "dotnet format whitespace ./DotnetAnalyzyHabr.sln --include ${relativeFile} --verbosity diagnostic"
+        "cmd": "dotnet format ./DotnetAnalyzyHabr.sln --include ${relativeFile} --verbosity diagnostic"
       }
     ]
   }
