@@ -1,0 +1,10 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.cs$",
+        "cmd": "dotnet format ./DotnetAnalyzyHabr.sln --include ${relativeFile} --verbosity diagnostic"
+      }
+    ]
+  }
+}

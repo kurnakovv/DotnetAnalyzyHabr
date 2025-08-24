@@ -1,20 +1,19 @@
-﻿namespace DotnetAnalyzyHabr.Tests
+﻿namespace DotnetAnalyzyHabr.Tests;
+
+public class UnitTest1
 {
-    public class UnitTest1
+    [Fact]
+    public void Test1()
     {
-        [Fact]
-        public void Test1()
-        {
-            List<User> users = [];
+        List<User> users = [];
 
-            var item = users.FirstOrDefault(x => x.Name == "Vasia");
+        var item = users.FirstOrDefault(x => x.Name == "Vasia");
 
-            //var a = item.Name;
-        }
+        //var a = item.Name;
     }
+}
 
-    public class User
-    {
-        public required string Name { get; set; }
-    }
+public class User
+{
+    public required string Name { get; set; }
 }
