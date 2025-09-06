@@ -14,6 +14,11 @@ public class UserService
     {
         return GetName();
     }
+
+    public async Task Get(long id)
+    {
+        await Task.Run(() => { });
+    }
 }
 
 public class User

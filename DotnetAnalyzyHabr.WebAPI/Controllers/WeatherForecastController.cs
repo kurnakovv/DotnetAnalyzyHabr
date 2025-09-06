@@ -74,6 +74,22 @@ public class WeatherForecastController : ControllerBase
         })
         .ToArray();
     }
+
+    [HttpGet(Name = "GetTest")]
+    public async Task<IEnumerable<WeatherForecast>> GetTest()
+    {
+        List<User> users = [];
+
+        await Task.Run(() => { });
+
+        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        {
+            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        })
+        .ToArray();
+    }
 }
 
 public class User
