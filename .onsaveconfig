@@ -1,4 +1,4 @@
 [*.cs]
-command = dotnet
+command = invalid_dotnet
 arguments = format "{solution_directory}\DotnetAnalyzyHabr.sln" --include {filename} --verbosity diagnostic --no-restore
 always_run = true

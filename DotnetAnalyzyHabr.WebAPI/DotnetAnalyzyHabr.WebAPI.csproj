@@ -8,7 +8,13 @@
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
-	<ItemGroup>
+  <!--<Target Name="OnBuild" AfterTargets="Build" Condition="'$(Configuration)' == 'DebugFormatting'">-->
+  <!--<Target Name="OnBuild" AfterTargets="Build">
+    <Exec Command="dotnet format no-restore" />
+  </Target>-->
+
+
+  <ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
 	</ItemGroup>
 

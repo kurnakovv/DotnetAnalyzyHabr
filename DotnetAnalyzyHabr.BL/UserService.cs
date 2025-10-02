@@ -7,15 +7,16 @@ public class UserService
     {
         List<User> users = [];
         User? item = users.FirstOrDefault(x => x.Name == "Vasia");
-        return item?.Name;
+        return item.Name;
     }
 
+    //[Obsolete]
     public string? M1()
     {
         return GetName();
     }
 
-    public async Task Get(long id)
+    public static async Task GetAsync()
     {
         await Task.Run(() => { });
     }

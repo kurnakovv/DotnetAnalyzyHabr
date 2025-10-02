@@ -2,28 +2,43 @@
 
 public class UserService
 {
+    public required int Age { get; set; }
+
     public string? GetName()
     {
+        //var c = new User() { Name = "Vasia" };
+        User c = new()
+        {
+            Name = "Test"
+        };
+
         List<User> users = [];
-        var item = users.FirstOrDefault(x => x.Name == "Vasia");
+        User? item = users.FirstOrDefault(x => x.Name == "Vasia");
+
+
+        item ??= c;
+
         int a = default;
-        return item?.Name;
+        ReadOnlySpan<int> x = [1, 2, 3];
+        string name = nameof(List<int>);
+
+        return item.Name;
     }
 
     public string? M1()
     {
         return GetName();
     }
+}
 
-    public async Task GetAsync(long id)
-    {
-        await Task.Run(() => { });
-    }
+public interface IUserService
+{
+    Task<string> GetName();
 }
 
 public class User
 {
-    public required string Name { get; set; }
+    public string? Name { get; set; }
 }
 
 public interface IUser

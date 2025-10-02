@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35506.116 d17.12
+VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetAnalyzyHabr.WebAPI", "DotnetAnalyzyHabr.WebAPI\DotnetAnalyzyHabr.WebAPI.csproj", "{22489FB9-FA0F-4947-BE9B-E7C0173B76F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetAnalyzyHabr.Tests", "DotnetAnalyzyHabr.Tests\DotnetAnalyzyHabr.Tests.csproj", "{756E69FA-9BE2-4054-8A25-7374CB03DA5A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetAnalyzyHabr.BL", "DotnetAnalyzyHabr.BL\DotnetAnalyzyHabr.BL.csproj", "{6A528175-0AE4-469E-ACD3-B3F2E4BCF49A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{9CA90D65-AA49-4D53-80D0-B26709C6C3E3}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
