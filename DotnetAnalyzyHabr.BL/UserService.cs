@@ -2,7 +2,7 @@
 
 public class UserService
 {
-    [Obsolete("Use X instead of this method")]
+    //[Obsolete("Use X instead of this method")]
     public string? GetName()
     {
         List<User> users = [];
