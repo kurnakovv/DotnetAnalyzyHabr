@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <WarningsNotAsErrors>nullable</WarningsNotAsErrors>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors> <!-- Теперь отключаем (так же можно просто не указывать) -->
+    <Configurations>Debug;Release;DebugWithoutFormatting</Configurations>
+    <Platforms>AnyCPU</Platforms>
     <!--<WarningsAsErrors>CS8602,CS8603</WarningsAsErrors> --><!-- Разделитель кодов через запятую, так как и в WarningsNotAsErrors -->
   </PropertyGroup>
 
