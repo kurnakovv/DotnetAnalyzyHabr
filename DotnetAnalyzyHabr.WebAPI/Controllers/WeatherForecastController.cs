@@ -67,7 +67,7 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
         })];
     }
 
-    [HttpGet(Name = "GetTest")]   
+    [HttpGet(Name = "GetTest")]
     public async Task<IEnumerable<WeatherForecast>> GetTestAsync()
     {
         List<User> users = [];
