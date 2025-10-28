@@ -484,8 +484,38 @@ dotnet_diagnostic.CA2257.severity = default # CA2257: Members defined on an inte
 dotnet_diagnostic.CA2258.severity = default # CA2258: Providing a 'DynamicInterfaceCastableImplementation' interface in Visual Basic is unsupported
 
 
+##
+## IDisposableAnalyzers rules
+##
+# All rules here https://github.com/DotNetAnalyzers/IDisposableAnalyzers
+dotnet_diagnostic.IDISP001.severity = suggestion # Dispose created
+dotnet_diagnostic.IDISP002.severity = suggestion # Dispose member
+dotnet_diagnostic.IDISP003.severity = suggestion # Dispose previous before re-assigning
+dotnet_diagnostic.IDISP004.severity = suggestion # Don't ignore created IDisposable
+dotnet_diagnostic.IDISP005.severity = suggestion # Return type should indicate that the value should be disposed
+dotnet_diagnostic.IDISP006.severity = suggestion # Implement IDisposable
+dotnet_diagnostic.IDISP007.severity = suggestion # Don't dispose injected
+dotnet_diagnostic.IDISP008.severity = suggestion # Don't assign member with injected and created disposables
+dotnet_diagnostic.IDISP009.severity = suggestion # Add IDisposable interface
+dotnet_diagnostic.IDISP010.severity = suggestion # Call base.Dispose(disposing)
+dotnet_diagnostic.IDISP011.severity = suggestion # Don't return disposed instance
+dotnet_diagnostic.IDISP012.severity = suggestion # Property should not return created disposable
+dotnet_diagnostic.IDISP013.severity = suggestion # Await in using
+dotnet_diagnostic.IDISP014.severity = suggestion # Use a single instance of HttpClient
+dotnet_diagnostic.IDISP015.severity = suggestion # Member should not return created and cached instance
+dotnet_diagnostic.IDISP016.severity = suggestion # Don't use disposed instance
+dotnet_diagnostic.IDISP017.severity = suggestion # Prefer using
+dotnet_diagnostic.IDISP018.severity = suggestion # Call SuppressFinalize
+dotnet_diagnostic.IDISP019.severity = suggestion # Call SuppressFinalize
+dotnet_diagnostic.IDISP020.severity = suggestion # Call SuppressFinalize(this)
+dotnet_diagnostic.IDISP021.severity = suggestion # Call this.Dispose(true)
+dotnet_diagnostic.IDISP022.severity = suggestion # Call this.Dispose(false)
+dotnet_diagnostic.IDISP023.severity = suggestion # Don't use reference types in finalizer context
+dotnet_diagnostic.IDISP024.severity = suggestion # Don't call GC.SuppressFinalize(this) when the type is sealed and has no finalizer
+dotnet_diagnostic.IDISP025.severity = suggestion # Class with no virtual dispose method should be sealed
+dotnet_diagnostic.IDISP026.severity = suggestion # Class with no virtual DisposeAsyncCore method should be sealed
 
-
+dotnet_diagnostic.IDISP001.exclude_types = System.Net.Http.HttpClient
 
 # # Xml project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,nativeproj,locproj}]

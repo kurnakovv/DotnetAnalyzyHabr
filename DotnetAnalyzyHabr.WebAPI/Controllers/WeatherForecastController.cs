@@ -12,7 +12,7 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];
 
-    [HttpGet(Name = "GetWeatherForecast")]
+    [HttpGet("GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
         List<User> users = [];
@@ -67,7 +67,7 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
         })];
     }
 
-    [HttpGet(Name = "GetTest")]
+    [HttpGet("GetTest")]
     public async Task<IEnumerable<WeatherForecast>> GetTestAsync()
     {
         List<User> users = [];
