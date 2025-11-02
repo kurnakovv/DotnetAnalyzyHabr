@@ -13,7 +13,7 @@ public class UserService
         };
 
         List<User> users = [];
-        User? item = users.FirstOrDefault(x => x.Name == "Vasia");
+        User? item = users.FirstOrDefault(x => x.Name == "Vasia");   
 
 
         item ??= c;
