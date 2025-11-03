@@ -8,7 +8,7 @@ namespace DotnetAnalyzyHabr.WebAPI.Controllers;
 public class TestController(
     IMyApiClient myApiClient) : ControllerBase
 {
-    private readonly IMyApiClient _myApiClient = myApiClient;
+    private readonly IMyApiClient _myApiClient = myApiClient;  
 
     [HttpGet]
     public async Task<IActionResult> GetAsync()
