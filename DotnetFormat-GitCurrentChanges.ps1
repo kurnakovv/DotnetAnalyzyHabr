@@ -11,5 +11,8 @@ if ($files.Count -eq 0) {
 # Concat file names to string with space separator
 $filesString = $files -join " "
 
-Write-Host "Run dotnet format --include $files --verbosity detailed --no-restore"
+Write-Host "Running formatting..."
+Write-Host "---------------------"
+Write-Host "dotnet format --include $files --verbosity detailed --no-restore"
+Write-Host "---------------------"
 dotnet format --include $files --verbosity detailed --no-restore
