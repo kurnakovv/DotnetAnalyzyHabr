@@ -17,4 +17,9 @@ Write-Host "-----------------------"
 $files | ForEach-Object { Write-Host $_ }
 Write-Host "-----------------------"
 
-dotnet format --include $files --verbosity detailed
+Write-Host "Running formatting..."
+Write-Host "---------------------"
+Write-Host "dotnet format --include $files --verbosity detailed --no-restore"
+Write-Host "---------------------"
+
+dotnet format --include $files --verbosity detailed --no-restore
