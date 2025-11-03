@@ -5,7 +5,9 @@ namespace DotnetAnalyzyHabr.WebAPI.Services;
 public class TestService
 {
     private readonly IHttpClientFactory _httpClientFactory;
+#pragma warning disable IDISP006 // Implement IDisposable
     private readonly HttpClient _httpClient;
+#pragma warning restore IDISP006 // Implement IDisposable
 
     public TestService(
         IHttpClientFactory httpClientFactory
