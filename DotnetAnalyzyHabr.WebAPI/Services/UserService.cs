@@ -45,3 +45,10 @@ public interface IUser
 {
 
 }
+
+public enum Foo
+{
+    A,
+    B,
+    C
+}

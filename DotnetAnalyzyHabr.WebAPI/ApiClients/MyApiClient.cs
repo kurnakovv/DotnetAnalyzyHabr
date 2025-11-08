@@ -13,7 +13,7 @@ public class MyApiClient(HttpClient httpClient, Uri baseUri, string accessToken)
     private readonly HttpClient _httpClient = httpClient;
     private readonly Uri _baseUri = baseUri;
 
-    public async Task<TResponse?> GetAsync<TResponse>(Uri relativeUri)
+    public async Task<TResponse?> GetAsync<TResponse>(Uri relativeUri)  
     {
         var requestUri = new Uri(_baseUri, relativeUri);
 
