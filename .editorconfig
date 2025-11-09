@@ -31,7 +31,7 @@ trim_trailing_whitespace = true
 # # ...
 
 [*.cs]
-
+rulers = 80, 120
 
 dotnet_diagnostic.IDE0055.severity = warning
 trim_trailing_whitespace = true
@@ -515,7 +515,93 @@ dotnet_diagnostic.IDISP024.severity = suggestion # Don't call GC.SuppressFinaliz
 dotnet_diagnostic.IDISP025.severity = suggestion # Class with no virtual dispose method should be sealed
 dotnet_diagnostic.IDISP026.severity = suggestion # Class with no virtual DisposeAsyncCore method should be sealed
 
-dotnet_diagnostic.IDISP001.exclude_types = System.Net.Http.HttpClient
+##
+## Roslynator
+##
+# All rules here https://josefpihrt.github.io/docs/roslynator/configuration
+
+# Disable all rules
+dotnet_analyzer_diagnostic.category-roslynator.severity = suggestion
+
+# RCS0056: A line is too long https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0056
+roslynator_max_line_length = 200
+dotnet_diagnostic.rcs0056.severity = error
+
+guidelines = 200
+guidelines_style = 1px dotted purple
+
+dotnet_diagnostic.rcs0009.severity = warning # RCS0009: Add blank line between declaration and documentation comment https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0009
+dotnet_diagnostic.rcs0021.severity = warning # RCS0021: Format block's braces on a single line or multiple lines https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0021
+dotnet_diagnostic.rcs0027.severity = warning # RCS0027: Place new line after/before binary operator https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0027
+dotnet_diagnostic.rcs0031.severity = warning # RCS0031: Put enum member on its own line https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0031
+dotnet_diagnostic.rcs0033.severity = warning # RCS0033: Put statement on its own line https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0033
+dotnet_diagnostic.rcs0034.severity = warning # RCS0034: Put type parameter constraint on its own line https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0034
+dotnet_diagnostic.rcs0041.severity = warning # RCS0041: Remove new line between 'if' keyword and 'else' keyword https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0041
+dotnet_diagnostic.rcs0050.severity = warning # RCS0050: Add blank line before top declaration https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0050
+dotnet_diagnostic.rcs0053.severity = warning # RCS0053: Fix formatting of a list https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0053
+dotnet_diagnostic.rcs1006.severity = warning # RCS1006: Merge 'else' with nested 'if' https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1006
+dotnet_diagnostic.rcs1033.severity = warning # RCS1033: Remove redundant boolean literal https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1033
+dotnet_diagnostic.rcs1034.severity = warning # RCS1034: Remove redundant 'sealed' modifier https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1034
+dotnet_diagnostic.rcs1043.severity = warning # RCS1043: Remove 'partial' modifier from type with a single part https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1043
+dotnet_diagnostic.rcs1046.severity = warning # RCS1046: Asynchronous method name should end with 'Async' https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1046
+dotnet_diagnostic.rcs1047.severity = warning # RCS1047: Non-asynchronous method name should not end with 'Async' https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1047
+dotnet_diagnostic.rcs1055.severity = warning # RCS1055: Unnecessary semicolon at the end of declaration https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1055
+dotnet_diagnostic.rcs1061.severity = warning # RCS1061: Merge 'if' with nested 'if' https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1061
+dotnet_diagnostic.rcs1071.severity = warning # RCS1071: Remove redundant base constructor call https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1071
+dotnet_diagnostic.rcs1073.severity = warning # RCS1073: Convert 'if' to 'return' statement https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1073
+dotnet_diagnostic.rcs1074.severity = warning # RCS1074: Remove redundant constructor https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1074
+dotnet_diagnostic.rcs1081.severity = warning # RCS1081: Split variable declaration https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1081
+dotnet_diagnostic.rcs1097.severity = warning # RCS1097: Remove redundant 'ToString' call https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1097
+dotnet_diagnostic.rcs1098.severity = warning # RCS1098: Constant values should be placed on right side of comparisons https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1098
+dotnet_diagnostic.rcs1099.severity = warning # RCS1099: Default label should be the last label in a switch section https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1099
+dotnet_diagnostic.rcs1103.severity = warning # RCS1103: Convert 'if' to assignment https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1103
+dotnet_diagnostic.rcs1104.severity = warning # RCS1104: Simplify conditional expression https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1104
+dotnet_diagnostic.rcs1105.severity = warning # RCS1105: Unnecessary interpolation https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1105
+dotnet_diagnostic.rcs1108.severity = warning # RCS1108: Add 'static' modifier to all partial class declarations https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1108
+dotnet_diagnostic.rcs1113.severity = warning # RCS1113: Use 'string.IsNullOrEmpty' method https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1113
+dotnet_diagnostic.rcs1114.severity = warning # RCS1114: Remove redundant delegate creation https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1114
+dotnet_diagnostic.rcs1124.severity = warning # RCS1124: Inline local variable https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1124
+dotnet_diagnostic.rcs1129.severity = warning # RCS1129: Remove redundant field initialization https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1129
+dotnet_diagnostic.rcs1133.severity = warning # RCS1133: Remove redundant Dispose/Close call https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1133
+dotnet_diagnostic.rcs1136.severity = warning # RCS1136: Merge switch sections with equivalent content https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1136
+dotnet_diagnostic.rcs1146.severity = warning # RCS1146: Use conditional access https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1146
+dotnet_diagnostic.rcs1154.severity = warning # RCS1154: Sort enum members https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1154
+dotnet_diagnostic.rcs1161.severity = warning # RCS1161: Enum should declare explicit values https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1161
+dotnet_diagnostic.rcs1166.severity = warning # RCS1166: Value type object is never equal to null https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1166
+dotnet_diagnostic.rcs1170.severity = warning # RCS1170: Use read-only auto-implemented property https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1170
+dotnet_diagnostic.rcs1172.severity = warning # RCS1172: Use 'is' operator instead of 'as' operator https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1172
+dotnet_diagnostic.rcs1182.severity = warning # RCS1182: Remove redundant base interface https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1182
+dotnet_diagnostic.rcs1188.severity = warning # RCS1188: Remove redundant auto-property initialization https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1188
+dotnet_diagnostic.rcs1190.severity = warning # RCS1190: Join string expressions https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1190
+dotnet_diagnostic.rcs1192.severity = warning # RCS1192: Unnecessary usage of verbatim string literal https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1192
+dotnet_diagnostic.rcs1196.severity = warning # RCS1196: Call extension method as instance method https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1196
+dotnet_diagnostic.rcs1197.severity = warning # RCS1197: Optimize StringBuilder.Append/AppendLine call https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1197
+dotnet_diagnostic.rcs1199.severity = warning # RCS1199: Unnecessary null check https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1199
+dotnet_diagnostic.rcs1200.severity = warning # RCS1200: Call 'Enumerable.ThenBy' instead of 'Enumerable.OrderBy' https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1200
+dotnet_diagnostic.rcs1201.severity = warning # RCS1201: Use method chaining https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1201
+dotnet_diagnostic.rcs1208.severity = warning # RCS1208: Reduce 'if' nesting https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1208
+dotnet_diagnostic.rcs1211.severity = warning # RCS1211: Remove unnecessary 'else' https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1211
+dotnet_diagnostic.rcs1215.severity = warning # RCS1215: Expression is always equal to true/false https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1215
+dotnet_diagnostic.rcs1220.severity = warning # RCS1220: Use pattern matching instead of combination of 'is' operator and cast operator https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1220
+dotnet_diagnostic.rcs1229.severity = warning # RCS1229: Use async/await when necessary https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1229
+dotnet_diagnostic.rcs1232.severity = warning # RCS1232: Order elements in documentation comment https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1232
+dotnet_diagnostic.rcs1236.severity = warning # RCS1236: Use exception filter https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1236
+dotnet_diagnostic.rcs1238.severity = warning # RCS1238: Avoid nested ?: operators https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1238
+dotnet_diagnostic.rcs1239.severity = warning # RCS1239: Use 'for' statement instead of 'while' statement https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1239
+dotnet_diagnostic.rcs1243.severity = warning # RCS1243: Duplicate word in a comment https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1243
+dotnet_diagnostic.rcs1251.severity = warning # RCS1251: Remove unnecessary braces from record declaration https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1251
+dotnet_diagnostic.rcs1259.severity = warning # RCS1259: Remove empty syntax https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1259
+dotnet_diagnostic.rcs1261.severity = warning # RCS1261: Resource can be disposed asynchronously https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1261/
+dotnet_diagnostic.rcs1262.severity = warning # RCS1262: Unnecessary raw string literal https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1262
+dotnet_diagnostic.rcs1263.severity = warning # RCS1263: Invalid reference in a documentation comment https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1263
+dotnet_diagnostic.rcs1266.severity = warning # RCS1266: Use raw string literal https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1266
+
+
+# Попробовать
+# RCS0063: Remove unnecessary blank line https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0063
+# (на тоненького) RCS1260: Add/remove trailing comma https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1260
+
+## Roslynator END
 
 # # Xml project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,nativeproj,locproj}]
