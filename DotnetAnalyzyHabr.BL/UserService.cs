@@ -11,8 +11,12 @@ public class UserService
     }
 
     //[Obsolete]
-    public string? M1()
+    public string? M1(bool a, bool b)
     {
+        if (a =!b)
+        {
+
+        }
         return GetName();
     }
 

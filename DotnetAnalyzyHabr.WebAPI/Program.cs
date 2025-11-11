@@ -15,18 +15,20 @@ builder.Services.AddHttpClient("MyApiClient", client =>
     client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
-builder.Services.AddSingleton<IMyApiClient>(sp =>
-{
-    IHttpClientFactory httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
+builder.Services.AddSingleton<IMyApiClient>(
+    sp =>
+    {
+        IHttpClientFactory httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
 #pragma warning disable IDISP001 // Dispose created
-    HttpClient httpClient = httpClientFactory.CreateClient("MyApiClient");
+        HttpClient httpClient = httpClientFactory.CreateClient("MyApiClient");
 #pragma warning restore IDISP001 // Dispose created
 
-    Uri baseUri = new("https://jsonplaceholder.typicode.com/");
-    string accessToken = "your_access_token_here";
+        Uri baseUri = new("https://jsonplaceholder.typicode.com/");
+        string accessToken = "your_access_token_here";
 
-    return new MyApiClient(httpClient, baseUri, accessToken);
-});
+        return new MyApiClient(httpClient, baseUri, accessToken);
+    }
+);
 
 WebApplication app = builder.Build();
 

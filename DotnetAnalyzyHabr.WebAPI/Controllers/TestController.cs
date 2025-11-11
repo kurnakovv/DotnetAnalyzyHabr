@@ -1,5 +1,6 @@
 ﻿using DotnetAnalyzyHabr.WebAPI.ApiClients;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DotnetAnalyzyHabr.WebAPI.Controllers;
 
@@ -8,7 +9,7 @@ namespace DotnetAnalyzyHabr.WebAPI.Controllers;
 public class TestController(
     IMyApiClient myApiClient) : ControllerBase
 {
-    private readonly IMyApiClient _myApiClient = myApiClient;  
+    private readonly IMyApiClient _myApiClient = myApiClient;
 
     [HttpGet]
     public async Task<IActionResult> GetAsync()

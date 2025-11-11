@@ -41,14 +41,11 @@ public class User
     public string? Name { get; set; }
 }
 
-public interface IUser
-{
-
-}
+public interface IUser;
 
 public enum Foo
 {
-    A,
-    B,
-    C
+    A = 0,
+    B = 1,
+    C = 2
 }

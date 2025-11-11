@@ -13,14 +13,14 @@
   <!--<Target Name="OnBuild" AfterTargets="Build" Condition="'$(Configuration)' == 'DebugFormatting'">-->
 
 
-  <Target Name="FormatPreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Debug'">
+  <!--<Target Name="FormatPreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Debug'">
     <Exec
       WorkingDirectory="$(SolutionDir)"
       IgnoreExitCode="true"
       ContinueOnError="true"
       Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;.\DotnetFormat-GitBranchChanges.ps1&quot;"
     />
-  </Target>
+  </Target>-->
 
   
   
