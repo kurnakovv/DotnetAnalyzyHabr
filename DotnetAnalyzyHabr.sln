@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetAnalyzyHabr.BL", "Dot
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{9CA90D65-AA49-4D53-80D0-B26709C6C3E3}"
 	ProjectSection(SolutionItems) = preProject
-		.config\.pvsconfig = .config\.pvsconfig
+		.config/.pvsconfig = .config/.pvsconfig
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
