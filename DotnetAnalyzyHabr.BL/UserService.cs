@@ -13,7 +13,16 @@ public class UserService
     //[Obsolete]
     public string? M1(bool a, bool b)
     {
-        if (a =!b)
+        using MemoryStream stream = new MemoryStream();
+        stream.CopyTo(stream);
+        for (int i = 0; i >= 10; i++)
+        {
+            for (int j = 0; j >= i; i++)
+            {
+
+            }
+        }
+        if (a =! b)
         {
 
         }

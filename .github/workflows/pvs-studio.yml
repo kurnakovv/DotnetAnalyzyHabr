@@ -9,11 +9,15 @@ on:
 jobs:
   build-analyze:
     runs-on: ubuntu-24.04
+    # Разрешаем экшину писать пойманные ошибки во вкладку "Security"
     permissions:
       security-events: write
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+
+        # Устанавливаем все необходимые инструменты и устанавливаем ключ, формата: "имя_ключа XXXX-XXXX-XXXX-XXXX"
+        # https://pvs-studio.com/en/docs/manual/6579/
       - name: Install tools
         run: |
           wget -q -O - https://files.pvs-studio.com/etc/pubkey.txt \
@@ -26,17 +30,39 @@ jobs:
           sudo apt install pvs-studio
           sudo apt install pvs-studio-dotnet
           pvs-studio-analyzer credentials ${{ secrets.PVS_STUDIO_CREDENTIALS }}
+
       - name: Build
         run: |
           dotnet build DotnetAnalyzyHabr.sln
+
       - name: Analyze
+        # Параметры https://pvs-studio.com/en/docs/manual/0035/
         run: |
-          pvs-studio-dotnet -t DotnetAnalyzyHabr.sln -o ./DotnetAnalyzyHabrOutput.json -r -C .config/.pvsconfig
+          pvs-studio-dotnet \
+            --target DotnetAnalyzyHabr.sln \
+            --output ./DotnetAnalyzyHabrOutput.json -r \
+            --rulesConfig .config/.pvsconfig
+
       - name: Convert report
+        # Если pvs studio поймал ошибки, то пайплайн упадет с ошибкой и не напишет отчет.
+        # Что бы этого избежать всегда пишем отчет, даже если предыдущие шаги упали (if: always())
         if: always()
+
+        # Параметры https://pvs-studio.com/en/docs/manual/0038/
         run: |
-          plog-converter DotnetAnalyzyHabrOutput.json -a GA:1,2,3,4 -t json -n relative -R toRelative -r $PWD
-          plog-converter relative.json -a GA:1,2,3,4 -t sarif -n pvs-report -r file://
+          plog-converter DotnetAnalyzyHabrOutput.json \
+            --analyzer GA:1,2,3,4 \
+            --renderTypes json \
+            --name relative \
+            --pathTransformationMode toRelative \
+            --srcRoot $PWD
+
+          plog-converter relative.json \
+            --analyzer GA:1,2,3,4 \
+            --renderTypes sarif \
+            --outputNameTemplate pvs-report \
+            --srcRoot file://
+
       - name: Publish report
         if: always()
         uses: github/codeql-action/upload-sarif@v3
