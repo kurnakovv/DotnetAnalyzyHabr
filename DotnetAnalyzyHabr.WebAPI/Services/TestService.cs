@@ -29,4 +29,17 @@ public class TestService
         // OK
         await using Stream goodStream = file.OpenReadStream();
     }
+
+    public async Task WorkWithFileAsync(
+        IFormFile file,
+        CancellationToken ct
+    )
+    {
+        // ...
+
+        using var copyMS = new MemoryStream();
+        file.CopyTo(copyMS);
+
+        // ...
+    }
 }

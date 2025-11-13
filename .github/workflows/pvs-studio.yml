@@ -60,7 +60,7 @@ jobs:
           plog-converter relative.json \
             --analyzer GA:1,2,3,4 \
             --renderTypes sarif \
-            --outputNameTemplate pvs-report \
+            --name pvs-report \
             --srcRoot file://
 
       - name: Publish report
