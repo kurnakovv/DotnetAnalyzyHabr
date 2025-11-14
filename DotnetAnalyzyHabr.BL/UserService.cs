@@ -26,7 +26,7 @@ public class UserService
         {
 
         }
-        new List<int>() { 1, 2, 3 }.Select(x => x).Where(x => x == 1).ToList();
+        new List<int>() { 1, 2, 3 }.Where(x => new List<int>().Any(x => x == 1)).ToList();
         return GetName();
     }
 
