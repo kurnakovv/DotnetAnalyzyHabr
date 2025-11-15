@@ -15,12 +15,9 @@ public class UserService
         List<User> users = [];
         User? item = users.FirstOrDefault(x => x.Name == "Vasia");
 
-
         item ??= c;
 
-        int a = default;
         ReadOnlySpan<int> x = [1, 2, 3];
-        string name = nameof(List<int>);
 
         return item.Name;
     }
@@ -33,7 +30,7 @@ public class UserService
 
 public interface IUserService
 {
-    Task<string> GetName();
+    Task<string> GetNameAsync();
 }
 
 public class User

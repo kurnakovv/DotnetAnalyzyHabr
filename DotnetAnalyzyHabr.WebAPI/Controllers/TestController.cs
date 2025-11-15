@@ -1,20 +1,25 @@
 ﻿using DotnetAnalyzyHabr.WebAPI.ApiClients;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace DotnetAnalyzyHabr.WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class TestController(
-    IMyApiClient myApiClient) : ControllerBase
+public class TestController : ControllerBase
 {
-    private readonly IMyApiClient _myApiClient = myApiClient;
+    private readonly IMyApiClient _myApiClient;
+
+    public TestController(
+        IMyApiClient myApiClient
+    )
+    {
+        _myApiClient = myApiClient;
+    }
 
     [HttpGet]
-    public async Task<IActionResult> GetAsync()
+    public async Task<IActionResult> Get()
     {
-        var post = await _myApiClient.GetAsync<Post>(new Uri("posts/1", UriKind.Relative));
+        Post? post = await _myApiClient.GetAsync<Post>(new Uri("posts/1", UriKind.Relative));
         return Ok(post?.Title);
     }
 }

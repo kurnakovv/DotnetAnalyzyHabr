@@ -1,6 +1,4 @@
-﻿using System.Net.Http;
-
-namespace DotnetAnalyzyHabr.WebAPI.Services;
+﻿namespace DotnetAnalyzyHabr.WebAPI.Services;
 
 public class TestService
 {
@@ -19,7 +17,7 @@ public class TestService
 
     public async Task WorkWithIDisposeAsync(IFormFile file)
     {
-        using var response = await _httpClient.GetAsync(new Uri("uri"));
+        using HttpResponseMessage response = await _httpClient.GetAsync(new Uri("uri"));
 
         // OK
         await using Stream goodStream = file.OpenReadStream();

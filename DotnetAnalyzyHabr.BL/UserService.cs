@@ -7,26 +7,29 @@ public class UserService
     {
         List<User> users = [];
         User? item = users.FirstOrDefault(x => x.Name == "Vasia");
-        return item.Name;
+        //return item.Name;
+        return item?.Name;
     }
 
     //[Obsolete]
-    public string? M1(bool a, bool b)
+    public string? M1(
+    //bool a, bool b
+    )
     {
-        using MemoryStream stream = new MemoryStream();
-        stream.CopyTo(stream);
-        for (int i = 0; i >= 10; i++)
-        {
-            for (int j = 0; j >= i; i++)
-            {
+        //using MemoryStream stream = new();
+        //stream.CopyTo(stream);
+        //for (int i = 0; i >= 10; i++)
+        //{
+        //    for (int j = 0; j >= i; i++)
+        //    {
 
-            }
-        }
-        if (a =! b)
-        {
+        //    }
+        //}
+        //if (a = !b)
+        //{
 
-        }
-        new List<int>() { 1, 2, 3 }.Where(x => new List<int>().Any(x => x == 1)).ToList();
+        //}
+        //new List<int>() { 1, 2, 3 }.Where(x => new List<int>().Any(x => x == 1)).ToList();
         return GetName();
     }
 

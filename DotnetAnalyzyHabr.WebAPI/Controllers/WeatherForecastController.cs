@@ -1,11 +1,11 @@
-using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetAnalyzyHabr.WebAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController(ILogger<WeatherForecastController> logger) : ControllerBase
+public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries =
     [
@@ -68,7 +68,7 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
     }
 
     [HttpGet("GetTest")]
-    public async Task<IEnumerable<WeatherForecast>> GetTestAsync()
+    public async Task<IEnumerable<WeatherForecast>> GetTest()
     {
         List<User> users = [];
 

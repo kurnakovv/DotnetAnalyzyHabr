@@ -12,7 +12,7 @@
   <!--<Target Name="OnBuild" AfterTargets="Build" Condition="'$(Configuration)' == 'DebugFormatting'">-->
 
   <Target Name="FormatPreBuild" BeforeTargets="PreBuildEvent">
-    <Exec WorkingDirectory="$(SolutionDir)" Command="dotnet format $(SolutionFileName) --no-restore --verbosity diagnostic" />
+    <Exec WorkingDirectory="$(SolutionDir)" Command="dotnet format $(SolutionFileName) --no-restore --verbosity diagnostic --severity info" />
   </Target>
   
   <!--<Target Name="FormatPreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Debug'">

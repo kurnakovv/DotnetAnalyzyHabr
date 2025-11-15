@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-
-namespace DotnetAnalyzyHabr.WebAPI.ApiClients;
+﻿namespace DotnetAnalyzyHabr.WebAPI.ApiClients;
 
 public interface IMyApiClient
 {
@@ -8,16 +6,26 @@ public interface IMyApiClient
     Task<TResponse?> PostAsync<TRequest, TResponse>(Uri relativeUri, TRequest payload);
 }
 
-public class MyApiClient(HttpClient httpClient, Uri baseUri, string accessToken) : IMyApiClient
+public class MyApiClient : IMyApiClient
 {
-    private readonly HttpClient _httpClient = httpClient;
-    private readonly Uri _baseUri = baseUri;
+    private readonly HttpClient _httpClient;
+    private readonly Uri _baseUri;
+
+    public MyApiClient(
+        HttpClient httpClient,
+        Uri baseUri
+    )
+    {
+        _httpClient = httpClient;
+        _baseUri = baseUri;
+
+    }
 
     public async Task<TResponse?> GetAsync<TResponse>(Uri relativeUri)
     {
-        var requestUri = new Uri(_baseUri, relativeUri);
+        Uri requestUri = new(_baseUri, relativeUri);
 
-        using var response = await _httpClient.GetAsync(requestUri);
+        using HttpResponseMessage response = await _httpClient.GetAsync(requestUri);
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<TResponse>();
@@ -25,9 +33,9 @@ public class MyApiClient(HttpClient httpClient, Uri baseUri, string accessToken)
 
     public async Task<TResponse?> PostAsync<TRequest, TResponse>(Uri relativeUri, TRequest payload)
     {
-        var requestUri = new Uri(_baseUri, relativeUri);
+        Uri requestUri = new(_baseUri, relativeUri);
 
-        using var response = await _httpClient.PostAsJsonAsync(requestUri, payload);
+        using HttpResponseMessage response = await _httpClient.PostAsJsonAsync(requestUri, payload);
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<TResponse>();
