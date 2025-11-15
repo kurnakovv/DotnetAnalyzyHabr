@@ -31,49 +31,242 @@ trim_trailing_whitespace = true
 # # ...
 
 [*.cs]
-rulers = 80, 120
-
-dotnet_diagnostic.IDE0055.severity = warning
-trim_trailing_whitespace = true
-
-# Only enforce file-scoped namespace declarations
-
-# https://stackoverflow.com/questions/76811069/change-the-severity-of-all-stylecop-rules-using-editorconfig
-
-csharp_style_namespace_declarations = file_scoped:error
 
 ##
-## Naming rules
+## Code-style (IDExxxx) rules
 ##
+# All rules here https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules
+
+dotnet_analyzer_diagnostic.category-Style.severity = error
+dotnet_analyzer_diagnostic.category-CodeQuality.severity = error
+
+
+### ! Language rules ! ###
+# Rules that pertain to the C# or Visual Basic language. For example, you can specify rules that regard the use of var when defining variables, or whether expression-bodied members are preferred. This category also includes rules that find unnecessary code, for example, unreachable code within methods or unused private fields, properties, or methods.
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules
+
+
+### 'using' directive preferences ###
+
+# Require file header (IDE0073)
+file_header_template = unset
+dotnet_diagnostic.IDE0073.severity = none
+
+# Remove unnecessary using directives (IDE0005)
+dotnet_diagnostic.IDE0005.severity = suggestion # >= warning only if <GenerateDocumentationFile>true</GenerateDocumentationFile> in csproj
+
+
+### Code-block preferences ###
+
+# Namespace declaration preferences (IDE0160, IDE0161)
+csharp_style_namespace_declarations = file_scoped
+dotnet_diagnostic.IDE0160.severity = none
+
+# Remove unnecessary lambda expression (IDE0200)
+csharp_style_prefer_method_group_conversion = false
+dotnet_diagnostic.IDE0200.severity = none
+
+# Convert to top-level statements (IDE0210) / Convert to 'Program.Main' style program (IDE0211)
+dotnet_diagnostic.IDE0211.severity = none
+csharp_style_prefer_top_level_statements = false
+
+# Use primary constructor (IDE0290)
+csharp_style_prefer_primary_constructors = false
+dotnet_diagnostic.IDE0290.severity = none
+
+
+### Expression-bodied members ###
+
+dotnet_diagnostic.IDE0004.severity = none # Remove unnecessary cast (IDE0004)
+
+# Use expression body for operators (IDE0023, IDE0024)
+csharp_style_expression_bodied_operators = when_on_single_line
+
+# Use expression body for indexers (IDE0026)
+csharp_style_expression_bodied_indexers = when_on_single_line
+
+# Use expression body for lambdas (IDE0053)
+csharp_style_expression_bodied_lambdas = when_on_single_line
+
+
+### Expression-level preferences ###
+
+# Use inferred member names (IDE0037)
+dotnet_style_prefer_inferred_anonymous_type_member_names = false
+
+# Use conditional expression for assignment (IDE0045)
+dotnet_style_prefer_conditional_expression_over_assignment = false
+dotnet_diagnostic.IDE0045.severity = none
+
+# Use conditional expression for return (IDE0046)
+dotnet_style_prefer_conditional_expression_over_return = false
+dotnet_diagnostic.IDE0046.severity = none
+
+dotnet_diagnostic.IDE0050.severity = none # (removed) Convert anonymous type to tuple (IDE0050)
+dotnet_diagnostic.IDE0058.severity = none # Remove unnecessary expression value (IDE0058)
+dotnet_diagnostic.IDE0059.severity = none # Remove unnecessary value assignment (IDE0059)
+
+# Simplify 'default' expression (IDE0034)
+csharp_prefer_simple_default_expression = false
+dotnet_diagnostic.IDE0034.severity = none
+
+# Use local function instead of lambda (IDE0039)
+csharp_style_prefer_local_over_anonymous_function = false
+dotnet_diagnostic.IDE0039.severity = none
+
+# Use index operator (IDE0056)
+csharp_style_prefer_index_operator = false
+dotnet_diagnostic.IDE0056.severity = none
+
+# Use range operator (IDE0057)
+csharp_style_prefer_range_operator = false
+dotnet_diagnostic.IDE0057.severity = none
+
+# Add explicit cast in foreach loop (IDE0220)
+dotnet_style_prefer_foreach_explicit_cast_in_source = always
+
+# Use collection expression for builder (IDE0304)
+dotnet_diagnostic.IDE0304.severity = none
+
+# Use unbound generic type (IDE0340)
+csharp_style_prefer_unbound_generic_type_in_nameof = false
+dotnet_diagnostic.IDE0340.severity = none
+
+# Use implicitly typed lambda (IDE0350)
+csharp_style_prefer_implicitly_typed_lambda_expression = false
+dotnet_diagnostic.IDE0350.severity = none
+
+
+### Field preferences ###
+# Nothing yet
+
+
+### Language keyword vs. framework types preferences ###
+# Nothing yet
+
+
+### Modifier preferences ###
+
+# Make local function static (IDE0062)
+csharp_prefer_static_local_function = false
+dotnet_diagnostic.IDE0062.severity = none
+
+# Make anonymous function static (IDE0320)
+csharp_prefer_static_anonymous_function = false
+dotnet_diagnostic.IDE0320.severity = none
+
+
+### New-line preferences ###
+
+# Avoid multiple blank lines (IDE2000)┼
+dotnet_style_allow_multiple_blank_lines_experimental = false
+
+# Blank line required between block and subsequent statement (IDE2003)┼
+dotnet_diagnostic.IDE2003.severity = none
+
+# Embedded statements must be on their own line (IDE2001)┼
+dotnet_diagnostic.IDE2001.severity = none
+
+# Consecutive braces must not have blank line between them (IDE2002)┼
+csharp_style_allow_blank_lines_between_consecutive_braces_experimental = false
+
+# Blank line not allowed after constructor initializer colon (IDE2004)┼
+csharp_style_allow_blank_line_after_colon_in_constructor_initializer_experimental = false
+
+# Blank line not allowed after conditional expression token (IDE2005)┼
+csharp_style_allow_blank_line_after_token_in_conditional_expression_experimental = false
+
+# Blank line not allowed after arrow expression clause token (IDE2006)┼
+csharp_style_allow_blank_line_after_token_in_arrow_expression_clause_experimental = false
+dotnet_diagnostic.IDE2006.severity = none
+
+
+### Null-checking preferences ###
+# Nothing yet
+
+
+### Parameter preferences ###
+# Nothing yet
+
+
+### Parentheses preferences ###
+# Nothing yet
+
+
+### Pattern-matching preferences ###
+# Nothing yet
+
+
+### Suppression preferences ###
+
+# this and Me preferences (IDE0003, IDE0009)
+dotnet_diagnostic.IDE0009.severity = none # VB
+
+
+### var preferences ###
+
+# 'var' preferences (IDE0007, IDE0008)
+dotnet_diagnostic.IDE0007.severity = none
+
+
+
+### ! Formatting rules ! ###
+# Rules that pertain to the layout and structure of your code in order to make it easier to read. For example, you can specify a formatting option that defines whether spaces in control blocks are preferred or not.
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0055
+
+dotnet_diagnostic.IDE0055.severity = error
+
+dotnet_sort_system_directives_first = true
+csharp_new_line_before_members_in_anonymous_types = false
+csharp_indent_case_contents_when_block = false
+
+
+
+### ! Naming rules ! ###
+# Rules that pertain to the naming of code elements. For example, you can specify that async method names must have an "Async" suffix.
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/naming-rules
+
+dotnet_diagnostic.IDE1006.severity = default
 
 # Asynchronous method ends with the word "Async"
+# Note: This rule does not work for interface methods, a better solution is https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1046
 dotnet_naming_rule.asynchronous_method_ends_with_the_word_async.severity = error
 dotnet_naming_rule.asynchronous_method_ends_with_the_word_async.symbols = async_methods
 dotnet_naming_rule.asynchronous_method_ends_with_the_word_async.style = async_ending
+
 dotnet_naming_symbols.async_methods.applicable_kinds = method
 dotnet_naming_symbols.async_methods.required_modifiers = async
 dotnet_naming_symbols.async_methods.applicable_accessibilities = *
+
 dotnet_naming_style.async_ending.required_suffix = Async
 dotnet_naming_style.async_ending.capitalization = pascal_case
+
 
 # The interface must start with the letter "I"
 dotnet_naming_rule.interface_must_begins_with_I.severity = error
 dotnet_naming_rule.interface_must_begins_with_I.symbols = all_interfaces
 dotnet_naming_rule.interface_must_begins_with_I.style = begins_with_i
+
 dotnet_naming_symbols.all_interfaces.applicable_kinds = interface
 dotnet_naming_symbols.all_interfaces.applicable_accessibilities = *
+
 dotnet_naming_style.begins_with_i.required_prefix = I
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
-dotnet_diagnostic.IDE0055.severity = suggestion
 
 
+### ! Miscellaneous rules ! ###
+# Rules that do not belong in other categories.
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/miscellaneous-rules
+
+# Implement with Copilot (IDE3000)
+dotnet_diagnostic.IDE3000.severity = none
 
 
+[**Controller.cs]
+dotnet_naming_symbols.async_methods.applicable_accessibilities = private
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-Favorite Code analysis (CAxxxx) rules in .editorconfig
+[*.cs]
 
 ##
 ## Code analysis (CAxxxx) rules
@@ -95,7 +288,6 @@ dotnet_diagnostic.CA1044.severity = error # CA1044: Properties should not be wri
 dotnet_diagnostic.CA1047.severity = error # CA1047: Do not declare protected members in sealed types
 dotnet_diagnostic.CA1050.severity = error # CA1050: Declare types in namespaces
 dotnet_diagnostic.CA1051.severity = error # CA1051: Do not declare visible instance fields
-dotnet_diagnostic.CA1052.severity = error # CA1052: Static holder types should be Static or NotInheritable
 dotnet_diagnostic.CA1053.severity = error # CA1053: Static holder types should not have default constructors
 dotnet_diagnostic.CA1054.severity = error # CA1054: URI parameters should not be strings
 dotnet_diagnostic.CA1055.severity = error # CA1055: URI return values should not be strings
@@ -103,7 +295,6 @@ dotnet_diagnostic.CA1056.severity = error # CA1056: URI properties should not be
 dotnet_diagnostic.CA1061.severity = error # CA1061: Do not hide base class methods
 dotnet_diagnostic.CA1063.severity = error # CA1063: Implement IDisposable correctly
 dotnet_diagnostic.CA1064.severity = error # CA1064: Exceptions should be public
-dotnet_diagnostic.CA1065.severity = error # CA1065: Do not raise exceptions in unexpected locations
 dotnet_diagnostic.CA1068.severity = error # CA1068: CancellationToken parameters must come last
 dotnet_diagnostic.CA1069.severity = error # CA1069: Enums should not have duplicate values
 dotnet_diagnostic.CA1070.severity = error # CA1070: Do not declare event fields as virtual
@@ -124,6 +315,8 @@ dotnet_diagnostic.CA1046.severity = none # CA1046: Do not overload operator equa
 dotnet_diagnostic.CA1062.severity = none # CA1062: Validate arguments of public methods
 dotnet_diagnostic.CA1019.severity = none # CA1019: Define accessors for attribute arguments
 dotnet_diagnostic.CA1034.severity = none # CA1034: Nested types should not be visible
+dotnet_diagnostic.CA1052.severity = none # CA1052: Static holder types should be Static or NotInheritable
+dotnet_diagnostic.CA1065.severity = none # CA1065: Do not raise exceptions in unexpected locations
 
 # ℹ️ You can turn it on or not.
 dotnet_diagnostic.CA1010.severity = default # CA1010: Collections should implement generic interface
@@ -147,27 +340,27 @@ dotnet_diagnostic.CA1200.severity = error # CA1200: Avoid using cref tags with a
 
 ### Globalization rules ###
 # I haven't worked with multilingual apps, so it's hard to say what's useful and what's not.
-dotnet_diagnostic.CA1303.severity = none # CA1303: Do not pass literals as localized parameters
-dotnet_diagnostic.CA1304.severity = none # CA1304: Specify CultureInfo
-dotnet_diagnostic.CA1305.severity = none # CA1305: Specify IFormatProvider
-dotnet_diagnostic.CA1307.severity = none # CA1307: Specify StringComparison for clarity
-dotnet_diagnostic.CA1308.severity = none # CA1308: Normalize strings to uppercase
-dotnet_diagnostic.CA1309.severity = none # CA1309: Use ordinal StringComparison
-dotnet_diagnostic.CA1310.severity = none # CA1310: Specify StringComparison for correctness
-dotnet_diagnostic.CA1311.severity = none # CA1311: Specify a culture or use an invariant version
-dotnet_diagnostic.CA2101.severity = none # CA2101: Specify marshalling for P/Invoke string arguments
+dotnet_diagnostic.CA1303.severity = default # CA1303: Do not pass literals as localized parameters
+dotnet_diagnostic.CA1304.severity = default # CA1304: Specify CultureInfo
+dotnet_diagnostic.CA1305.severity = default # CA1305: Specify IFormatProvider
+dotnet_diagnostic.CA1307.severity = default # CA1307: Specify StringComparison for clarity
+dotnet_diagnostic.CA1308.severity = default # CA1308: Normalize strings to uppercase
+dotnet_diagnostic.CA1309.severity = default # CA1309: Use ordinal StringComparison
+dotnet_diagnostic.CA1310.severity = default # CA1310: Specify StringComparison for correctness
+dotnet_diagnostic.CA1311.severity = default # CA1311: Specify a culture or use an invariant version
+dotnet_diagnostic.CA2101.severity = default # CA2101: Specify marshalling for P/Invoke string arguments
 
 
 ### Portability and interoperability rules ###
 # I haven't worked with cross-platform apps, so it's hard to say what's useful and what's not.
-dotnet_diagnostic.CA1401.severity = none # CA1401: P/Invokes should not be visible
-dotnet_diagnostic.CA1416.severity = none # CA1416: Validate platform compatibility
-dotnet_diagnostic.CA1417.severity = none # CA1417: Do not use OutAttribute on string parameters for P/Invokes
-dotnet_diagnostic.CA1418.severity = none # CA1418: Use valid platform string
-dotnet_diagnostic.CA1419.severity = none # CA1419: Provide a parameterless constructor that is as visible as the containing type for concrete types derived from 'System.Runtime.InteropServices.SafeHandle'
-dotnet_diagnostic.CA1420.severity = none # CA1420: Property, type, or attribute requires runtime marshalling
-dotnet_diagnostic.CA1421.severity = none # CA1421: Method uses runtime marshalling when DisableRuntimeMarshallingAttribute is applied
-dotnet_diagnostic.CA1422.severity = none # CA1422: Validate platform compatibility
+dotnet_diagnostic.CA1401.severity = default # CA1401: P/Invokes should not be visible
+dotnet_diagnostic.CA1416.severity = default # CA1416: Validate platform compatibility
+dotnet_diagnostic.CA1417.severity = default # CA1417: Do not use OutAttribute on string parameters for P/Invokes
+dotnet_diagnostic.CA1418.severity = default # CA1418: Use valid platform string
+dotnet_diagnostic.CA1419.severity = default # CA1419: Provide a parameterless constructor that is as visible as the containing type for concrete types derived from 'System.Runtime.InteropServices.SafeHandle'
+dotnet_diagnostic.CA1420.severity = default # CA1420: Property, type, or attribute requires runtime marshalling
+dotnet_diagnostic.CA1421.severity = default # CA1421: Method uses runtime marshalling when DisableRuntimeMarshallingAttribute is applied
+dotnet_diagnostic.CA1422.severity = default # CA1422: Validate platform compatibility
 
 
 ### Maintainability rules ###
@@ -223,6 +416,7 @@ dotnet_diagnostic.CA1716.severity = none # CA1716: Identifiers should not match 
 dotnet_diagnostic.CA1802.severity = error # CA1802: Use Literals Where Appropriate
 dotnet_diagnostic.CA1810.severity = error # CA1810: Initialize reference type static fields inline
 dotnet_diagnostic.CA1812.severity = error # CA1812: Avoid uninstantiated internal classes
+dotnet_diagnostic.CA1819.severity = error # CA1819: Properties should not return arrays
 dotnet_diagnostic.CA1820.severity = error # CA1820: Test for empty strings using string length
 dotnet_diagnostic.CA1821.severity = error # CA1821: Remove empty finalizers
 dotnet_diagnostic.CA1823.severity = error # CA1823: Avoid unused private fields
@@ -249,16 +443,14 @@ dotnet_diagnostic.CA1846.severity = error # CA1846: Prefer AsSpan over Substring
 dotnet_diagnostic.CA1847.severity = error # CA1847: Use char literal for a single character lookup
 dotnet_diagnostic.CA1849.severity = error # CA1849: Call async methods when in an async method
 dotnet_diagnostic.CA1850.severity = error # CA1850: Prefer static HashData method over ComputeHash
-dotnet_diagnostic.CA1851.severity = error # CA1851: Possible multiple enumerations of IEnumerable collection
 dotnet_diagnostic.CA1853.severity = error # CA1853: Unnecessary call to 'Dictionary.ContainsKey(key)'
 dotnet_diagnostic.CA1854.severity = error # CA1854: Prefer the 'IDictionary.TryGetValue(TKey, out TValue)' method
 dotnet_diagnostic.CA1855.severity = error # CA1855: Use Span<T>.Clear() instead of Span<T>.Fill()
-dotnet_diagnostic.CA1856.severity = error # CA1856: Incorrect usage of ConstantExpected attribute (уже as error)
+dotnet_diagnostic.CA1856.severity = error # CA1856: Incorrect usage of ConstantExpected attribute (already as error)
 dotnet_diagnostic.CA1857.severity = error # CA1857: The parameter expects a constant for optimal performance
 dotnet_diagnostic.CA1858.severity = error # CA1858: Use StartsWith instead of IndexOf
 dotnet_diagnostic.CA1860.severity = error # CA1860: Avoid using 'Enumerable.Any()' extension method
 dotnet_diagnostic.CA1861.severity = error # CA1861: Avoid constant arrays as arguments
-dotnet_diagnostic.CA1862.severity = error # CA1862: Use the 'StringComparison' method overloads to perform case-insensitive string comparisons
 dotnet_diagnostic.CA1863.severity = error # CA1863: Use 'CompositeFormat'
 dotnet_diagnostic.CA1864.severity = error # CA1864: Prefer the 'IDictionary.TryAdd(TKey, TValue)' method
 # CA1865-CA1867: Use 'string.Method(char)' instead of 'string.Method(string)' for string with single char
@@ -271,9 +463,6 @@ dotnet_diagnostic.CA1870.severity = error # CA1870: Use a cached 'SearchValues' 
 dotnet_diagnostic.CA1871.severity = error # CA1871: Do not pass a nullable struct to 'ArgumentNullException.ThrowIfNull'
 dotnet_diagnostic.CA1872.severity = error # CA1872: Prefer 'Convert.ToHexString' and 'Convert.ToHexStringLower' over call chains based on 'BitConverter.ToString'
 
-# 😢 Had to turn it off
-dotnet_diagnostic.CA1819.severity = none # CA1819: Properties should not return arrays
-
 # ❌ Bad / Not for all apps
 dotnet_diagnostic.CA1805.severity = none # CA1805: Do not initialize unnecessarily
 dotnet_diagnostic.CA1806.severity = none # CA1806: Do not ignore method results
@@ -284,6 +473,8 @@ dotnet_diagnostic.CA1826.severity = none # CA1826: Use property instead of Linq 
 dotnet_diagnostic.CA1848.severity = none # CA1848: Use the LoggerMessage delegates
 dotnet_diagnostic.CA1859.severity = none # CA1859: Use concrete types when possible for improved performance
 dotnet_diagnostic.CA1852.severity = none # CA1852: Seal internal types
+dotnet_diagnostic.CA1851.severity = none # CA1851: Possible multiple enumerations of IEnumerable collection
+dotnet_diagnostic.CA1862.severity = none # CA1862: Use the 'StringComparison' method overloads to perform case-insensitive string comparisons
 
 # ℹ️ You can turn it on or not.
 dotnet_diagnostic.CA1813.severity = default # CA1813: Avoid unsealed attributes
@@ -295,11 +486,11 @@ dotnet_diagnostic.CA1838.severity = default # CA1838: Avoid StringBuilder parame
 
 ### SingleFile rules ###
 # I've never worked with anything like this before, so it's hard to say whether it's useful or not.
-dotnet_diagnostic.IL3000.severity = none # IL3000 Avoid accessing Assembly file path when publishing as a single file
-dotnet_diagnostic.IL3001.severity = none # IL3001 Avoid accessing Assembly file path when publishing as a single file
-dotnet_diagnostic.IL3002.severity = none # IL3002 Avoid calling members annotated with 'RequiresAssemblyFilesAttribute' when publishing as a single file
-dotnet_diagnostic.IL3003.severity = none # IL3003 'RequiresAssemblyFilesAttribute' annotations must match across all interface implementations or overrides.
-dotnet_diagnostic.IL3005.severity = none # IL3005 RequiresAssemblyFilesAttribute cannot be placed directly on application entry point.
+dotnet_diagnostic.IL3000.severity = default # IL3000 Avoid accessing Assembly file path when publishing as a single file
+dotnet_diagnostic.IL3001.severity = default # IL3001 Avoid accessing Assembly file path when publishing as a single file
+dotnet_diagnostic.IL3002.severity = default # IL3002 Avoid calling members annotated with 'RequiresAssemblyFilesAttribute' when publishing as a single file
+dotnet_diagnostic.IL3003.severity = default # IL3003 'RequiresAssemblyFilesAttribute' annotations must match across all interface implementations or overrides.
+dotnet_diagnostic.IL3005.severity = default # IL3005 RequiresAssemblyFilesAttribute cannot be placed directly on application entry point.
 
 
 ### Reliability rules ###
@@ -374,7 +565,6 @@ dotnet_diagnostic.CA3076.severity = error # CA3076: Insecure XSLT Script Executi
 dotnet_diagnostic.CA3077.severity = error # CA3077: Insecure Processing in API Design, XML Document and XML Text Reader
 dotnet_diagnostic.CA3147.severity = error # CA3147: Mark verb handlers with ValidateAntiForgeryToken
 dotnet_diagnostic.CA5350.severity = error # CA5350: Do Not Use Weak Cryptographic Algorithms
-dotnet_diagnostic.CA5351.severity = error # CA5351: Do Not Use Broken Cryptographic Algorithms
 dotnet_diagnostic.CA5358.severity = error # CA5358: Do Not Use Unsafe Cipher Modes
 dotnet_diagnostic.CA5359.severity = error # CA5359: Do not disable certificate validation
 dotnet_diagnostic.CA5360.severity = error # CA5360: Do not call dangerous methods in deserialization
@@ -403,7 +593,6 @@ dotnet_diagnostic.CA5382.severity = error # CA5382: Use secure cookies in ASP.NE
 dotnet_diagnostic.CA5383.severity = error # CA5383: Ensure use secure cookies in ASP.NET Core
 dotnet_diagnostic.CA5384.severity = error # CA5384: Do not use digital signature algorithm (DSA)
 dotnet_diagnostic.CA5385.severity = error # CA5385: Use Rivest-Shamir-Adleman (RSA) algorithm with sufficient key size
-dotnet_diagnostic.CA5386.severity = error # CA5386: Avoid hardcoding SecurityProtocolType value
 dotnet_diagnostic.CA5387.severity = error # CA5387: Do not use weak key derivation function with insufficient iteration count
 dotnet_diagnostic.CA5388.severity = error # CA5388: Ensure sufficient iteration count when using weak key derivation function
 dotnet_diagnostic.CA5389.severity = error # CA5389: Do not add archive item's path to the target file system path
@@ -411,7 +600,6 @@ dotnet_diagnostic.CA5390.severity = error # CA5390: Do not hard-code encryption 
 dotnet_diagnostic.CA5391.severity = error # CA5391: Use antiforgery tokens in ASP.NET Core MVC controllers
 dotnet_diagnostic.CA5392.severity = error # CA5392: Use DefaultDllImportSearchPaths attribute for P/Invokes
 dotnet_diagnostic.CA5393.severity = error # CA5393: Do not use unsafe DllImportSearchPath value
-dotnet_diagnostic.CA5394.severity = error # CA5394: Do not use insecure randomness
 dotnet_diagnostic.CA5395.severity = error # CA5395: Miss HttpVerb attribute for action methods
 dotnet_diagnostic.CA5396.severity = error # CA5396: Set HttpOnly to true for HttpCookie
 dotnet_diagnostic.CA5397.severity = error # CA5397: Do not use deprecated SslProtocols values
@@ -424,6 +612,10 @@ dotnet_diagnostic.CA5403.severity = error # CA5403: Do not hard-code certificate
 dotnet_diagnostic.CA5404.severity = error # CA5404: Do not disable token validation checks
 dotnet_diagnostic.CA5405.severity = error # CA5405: Do not always skip token validation in delegates
 
+# ❌ Bad / Not for all apps
+dotnet_diagnostic.CA5351.severity = none # CA5351: Do Not Use Broken Cryptographic Algorithms
+dotnet_diagnostic.CA5386.severity = none # CA5386: Avoid hardcoding SecurityProtocolType value
+dotnet_diagnostic.CA5394.severity = none # CA5394: Do not use insecure randomness
 
 ### Usage rules ###
 
@@ -431,8 +623,8 @@ dotnet_diagnostic.CA5405.severity = error # CA5405: Do not always skip token val
 dotnet_diagnostic.CA1801.severity = error # CA1801: Review unused parameters
 dotnet_diagnostic.CA1816.severity = error # CA1816: Call GC.SuppressFinalize correctly
 dotnet_diagnostic.CA2200.severity = error # CA2200: Rethrow to preserve stack details
+dotnet_diagnostic.CA2201.severity = error # CA2201: Do not raise reserved exception types
 dotnet_diagnostic.CA2207.severity = error # CA2207: Initialize value type static fields inline
-dotnet_diagnostic.CA2208.severity = error # CA2208: Instantiate argument exceptions correctly
 dotnet_diagnostic.CA2211.severity = error # CA2211: Non-constant fields should not be visible
 dotnet_diagnostic.CA2213.severity = error # CA2213: Disposable fields should be disposed
 dotnet_diagnostic.CA2214.severity = error # CA2214: Do not call overridable methods in constructors
@@ -459,7 +651,7 @@ dotnet_diagnostic.CA2248.severity = error # CA2248: Provide correct enum argumen
 dotnet_diagnostic.CA2249.severity = error # CA2249: Consider using String.Contains instead of String.IndexOf
 dotnet_diagnostic.CA2250.severity = error # CA2250: Use ThrowIfCancellationRequested
 dotnet_diagnostic.CA2251.severity = error # CA2251: Use String.Equals over String.Compare
-dotnet_diagnostic.CA2252.severity = error # CA2252: Opt in to preview features before using them (уже error)
+dotnet_diagnostic.CA2252.severity = error # CA2252: Opt in to preview features before using them (already as error)
 dotnet_diagnostic.CA2253.severity = error # CA2253: Named placeholders should not be numeric values
 dotnet_diagnostic.CA2259.severity = error # CA2259: Ensure ThreadStatic is only used with static fields
 dotnet_diagnostic.CA2260.severity = error # CA2260: Implement generic math interfaces correctly
@@ -469,13 +661,11 @@ dotnet_diagnostic.CA2264.severity = error # CA2264: Do not pass a non-nullable v
 dotnet_diagnostic.CA2265.severity = error # CA2265: Do not compare Span<T> to null or default
 dotnet_diagnostic.CA2263.severity = error # CA2263: Prefer generic overload when type is known
 
-# 😢 Had to turn it off
-dotnet_diagnostic.CA2201.severity = none # CA2201: Do not raise reserved exception types
-
 # ❌ Bad / Not for all apps
 dotnet_diagnostic.CA2219.severity = none # CA2219: Do not raise exceptions in exception clauses
 dotnet_diagnostic.CA2227.severity = none # CA2227: Collection properties should be read only
 dotnet_diagnostic.CA2254.severity = none # CA2254: Template should be a static expression
+dotnet_diagnostic.CA2208.severity = none # CA2208: Instantiate argument exceptions correctly
 
 # ❓ Didn't work / didn't understand
 dotnet_diagnostic.CA2255.severity = default # CA2255: The ModuleInitializer attribute should not be used in libraries
@@ -483,13 +673,15 @@ dotnet_diagnostic.CA2256.severity = default # CA2256: All members declared in pa
 dotnet_diagnostic.CA2257.severity = default # CA2257: Members defined on an interface with 'DynamicInterfaceCastableImplementationAttribute' should be 'static'
 dotnet_diagnostic.CA2258.severity = default # CA2258: Providing a 'DynamicInterfaceCastableImplementation' interface in Visual Basic is unsupported
 
+## **END** Code analysis (CAxxxx) rules **END**
+
 
 ##
 ## IDisposableAnalyzers rules
 ##
 # All rules here https://github.com/DotNetAnalyzers/IDisposableAnalyzers
-dotnet_diagnostic.IDISP001.severity = suggestion # Dispose created
-dotnet_diagnostic.IDISP002.severity = suggestion # Dispose member
+dotnet_diagnostic.IDISP001.severity = error # Dispose created
+dotnet_diagnostic.IDISP002.severity = error # Dispose member
 dotnet_diagnostic.IDISP003.severity = suggestion # Dispose previous before re-assigning
 dotnet_diagnostic.IDISP004.severity = suggestion # Don't ignore created IDisposable
 dotnet_diagnostic.IDISP005.severity = suggestion # Return type should indicate that the value should be disposed
@@ -514,6 +706,8 @@ dotnet_diagnostic.IDISP023.severity = suggestion # Don't use reference types in 
 dotnet_diagnostic.IDISP024.severity = suggestion # Don't call GC.SuppressFinalize(this) when the type is sealed and has no finalizer
 dotnet_diagnostic.IDISP025.severity = suggestion # Class with no virtual dispose method should be sealed
 dotnet_diagnostic.IDISP026.severity = suggestion # Class with no virtual DisposeAsyncCore method should be sealed
+
+## **END** IDisposableAnalyzers rules **END**
 
 ##
 ## Roslynator
@@ -604,6 +798,7 @@ dotnet_diagnostic.rcs1266.severity = warning # RCS1266: Use raw string literal h
 ## Roslynator END
 
 # Отключить по отдельным категориям StyleCop
+# https://stackoverflow.com/questions/76811069/change-the-severity-of-all-stylecop-rules-using-editorconfig
 dotnet_diagnostic.SA0001.severity = none
 
 dotnet_analyzer_diagnostic.category-StyleCop.CSharp.AlternativeRules.severity = none
