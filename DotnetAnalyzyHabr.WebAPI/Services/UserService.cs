@@ -1,26 +1,37 @@
 ﻿namespace DotnetAnalyzyHabr.WebAPI.Services;
 
+public enum Foo
+{
+    A = 0,
+    B = 1,
+    C = 2,
+}
+
+public interface IUserService
+{
+    Task<string> GetNameAsync();
+}
+
+public interface IUser;
+
 public class UserService
 {
     public required int Age { get; set; }
 
     public string? GetName()
     {
-        //var c = new User() { Name = "Vasia" };
+        // var c = new User() { Name = "Vasia" };
         User c = new()
         {
-            Name = "Test"
+            Name = "Test",
         };
 
         List<User> users = [];
         User? item = users.FirstOrDefault(x => x.Name == "Vasia");
 
-
         item ??= c;
 
-        int a = default;
         ReadOnlySpan<int> x = [1, 2, 3];
-        string name = nameof(List<int>);
 
         return item.Name;
     }
@@ -31,24 +42,7 @@ public class UserService
     }
 }
 
-public interface IUserService
-{
-    Task<string> GetName();
-}
-
 public class User
 {
     public string? Name { get; set; }
-}
-
-public interface IUser
-{
-
-}
-
-public enum Foo
-{
-    A,
-    B,
-    C
 }

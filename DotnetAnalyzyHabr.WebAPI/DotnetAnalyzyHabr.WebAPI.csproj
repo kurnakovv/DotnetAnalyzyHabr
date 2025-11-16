@@ -5,22 +5,24 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<Configurations>Debug;Release;DebugWithoutFormatting</Configurations>
 		<Platforms>AnyCPU</Platforms>
 	</PropertyGroup>
 
   <!--<Target Name="OnBuild" AfterTargets="Build" Condition="'$(Configuration)' == 'DebugFormatting'">-->
 
-
   <Target Name="FormatPreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Debug'">
+    <Exec WorkingDirectory="$(SolutionDir)" Command="dotnet format $(SolutionFileName) --no-restore --verbosity diagnostic --severity info" />
+  </Target>
+  
+  <!--<Target Name="FormatPreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Debug'">
     <Exec
       WorkingDirectory="$(SolutionDir)"
       IgnoreExitCode="true"
       ContinueOnError="true"
       Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;.\DotnetFormat-GitBranchChanges.ps1&quot;"
     />
-  </Target>
+  </Target>-->
 
   
   

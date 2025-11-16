@@ -7,9 +7,9 @@ public class UnitTest1
     {
         List<User> users = [];
 
-        User? item = users.FirstOrDefault(x => x.Name == "Vasia");  
+        User? item = users.FirstOrDefault(x => x.Name == "Vasia");
 
-        //var a = item.Name;
+        // var a = item.Name;
     }
 }
 
