@@ -104,6 +104,7 @@ dotnet_diagnostic.rcs0034.severity = error # RCS0034: Put type parameter constra
 dotnet_diagnostic.rcs0041.severity = error # RCS0041: Remove new line between 'if' keyword and 'else' keyword https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0041
 dotnet_diagnostic.rcs0050.severity = error # RCS0050: Add blank line before top declaration https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0050
 dotnet_diagnostic.rcs0053.severity = error # RCS0053: Fix formatting of a list https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0053
+dotnet_diagnostic.rcs0063.severity = error # RCS0063: Remove unnecessary blank line https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0063
 dotnet_diagnostic.rcs1006.severity = error # RCS1006: Merge 'else' with nested 'if' https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1006
 dotnet_diagnostic.rcs1033.severity = error # RCS1033: Remove redundant boolean literal https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1033
 dotnet_diagnostic.rcs1034.severity = error # RCS1034: Remove redundant 'sealed' modifier https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1034
@@ -156,15 +157,13 @@ dotnet_diagnostic.rcs1239.severity = error # RCS1239: Use 'for' statement instea
 dotnet_diagnostic.rcs1243.severity = error # RCS1243: Duplicate word in a comment https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1243
 dotnet_diagnostic.rcs1251.severity = error # RCS1251: Remove unnecessary braces from record declaration https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1251
 dotnet_diagnostic.rcs1259.severity = error # RCS1259: Remove empty syntax https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1259
+dotnet_diagnostic.rcs1260.severity = error # RCS1260: Add/remove trailing comma https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1260
 dotnet_diagnostic.rcs1261.severity = error # RCS1261: Resource can be disposed asynchronously https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1261/
 dotnet_diagnostic.rcs1262.severity = error # RCS1262: Unnecessary raw string literal https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1262
 dotnet_diagnostic.rcs1263.severity = error # RCS1263: Invalid reference in a documentation comment https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1263
 dotnet_diagnostic.rcs1266.severity = error # RCS1266: Use raw string literal https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1266
 
-
-# Попробовать
-# RCS0063: Remove unnecessary blank line https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0063
-# (на тоненького) RCS1260: Add/remove trailing comma https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1260
+resharper_variable_hides_outer_variable_highlighting = error
 
 ## **END** Roslynator **END**
 
@@ -935,5 +934,3 @@ dotnet_analyzer_diagnostic.category-StyleCop.CSharp.OrderingRules.severity = non
 dotnet_analyzer_diagnostic.category-StyleCop.CSharp.ReadabilityRules.severity = none
 dotnet_analyzer_diagnostic.category-StyleCop.CSharp.SpacingRules.severity = none
 dotnet_analyzer_diagnostic.category-StyleCop.CSharp.SpecialRules.severity = none
-
-resharper_variable_hides_outer_variable_highlighting = error

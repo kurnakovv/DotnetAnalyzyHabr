@@ -18,7 +18,6 @@ public class MyApiClient : IMyApiClient
     {
         _httpClient = httpClient;
         _baseUri = baseUri;
-
     }
 
     public async Task<TResponse?> GetAsync<TResponse>(Uri relativeUri)
