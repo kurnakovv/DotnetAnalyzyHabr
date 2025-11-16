@@ -4,14 +4,62 @@
 # top-most EditorConfig file
 root = true
 
-# Default settings:
-# A newline ending every file
-# Use 4 spaces as indentation
+# Для всех файлов
 [*]
+
+# Вставить пустую строчку в конец файла
 insert_final_newline = true
+
+# Использовать 4 пробела для отступов
+# Так же можно указать "indent_style = tab", но в таком случае таб может быть разным, в зависимости от настройки у разработчика (например 2, 4 или 8), так что не рекомендую так делать
 indent_style = space
 indent_size = 4
+
+# Удалить лишние пробелы в конце строки
 trim_trailing_whitespace = true
+
+# Указанные расширения без BOM
+[*.{csproj,locproj,nativeproj,proj,resx,slnx,vbproj}]
+charset = utf-8
+
+# Сгенерированные файлы, к ним правила применять не будут
+[*{_AssemblyInfo.cs,.notsupported.cs,AsmOffsets.cs}]
+generated_code = true
+
+# Ниже уже идут файлы, где применяется indent_size = 2, это полезно, особенно для xml, т.к. вложенность может быть намного больше чем в C#
+# Xml project files
+[*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,nativeproj,locproj}]
+indent_size = 2
+
+# Xml build files
+[*.builds]
+indent_size = 2
+
+# Xml files
+[*.{resx,ruleset,slnx,stylecop,xml}]
+indent_size = 2
+
+# Xml resource files
+[*.resx]
+# Особенность Visual Studio
+insert_final_newline = false
+trim_trailing_whitespace = false
+
+# Xml config files
+[*.{props,targets,config,nuspec}]
+indent_size = 2
+
+# Data serialization
+[*.{json,yaml,yml}]
+indent_size = 2
+
+# Особенности ОС
+# Shell scripts
+[*.sh]
+end_of_line = lf
+
+[*.{cmd,bat}]
+end_of_line = crlf
 
 
 # https://learn.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers?view=vs-2019#severity-levels
@@ -889,32 +937,3 @@ dotnet_analyzer_diagnostic.category-StyleCop.CSharp.SpacingRules.severity = none
 dotnet_analyzer_diagnostic.category-StyleCop.CSharp.SpecialRules.severity = none
 
 resharper_variable_hides_outer_variable_highlighting = error
-
-# # Xml project files
-[*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,nativeproj,locproj}]
-indent_size = 2
-
-[*.{csproj,vbproj,proj,nativeproj,locproj}]
-charset = utf-8
-
-# Xml build files
-[*.builds]
-indent_size = 2
-
-# Xml files
-[*.{xml,stylecop,resx,ruleset}]
-indent_size = 2
-
-# Xml config files
-[*.{props,targets,config,nuspec}]
-indent_size = 2
-
-# YAML config files
-[*.{yml,yaml}]
-indent_size = 2
-
-# Shell scripts
-[*.sh]
-end_of_line = lf
-[*.{cmd,bat}]
-end_of_line = crlf
