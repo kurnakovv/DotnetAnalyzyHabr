@@ -3,12 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetAnalyzyHabr.WebAPI.Controllers;
 
+/// <summary>
+/// Test.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class TestController : ControllerBase
 {
     private readonly IMyApiClient _myApiClient;
 
+    /// <summary>
+    /// TestController.
+    /// </summary>
+    /// <param name="myApiClient">myApiClient.</param>
     public TestController(
         IMyApiClient myApiClient
     )
@@ -16,6 +23,10 @@ public class TestController : ControllerBase
         _myApiClient = myApiClient;
     }
 
+    /// <summary>
+    /// Get test.
+    /// </summary>
+    /// <returns>test.</returns>
     [HttpGet]
     public async Task<IActionResult> Get()
     {
@@ -24,4 +35,11 @@ public class TestController : ControllerBase
     }
 }
 
+/// <summary>
+/// Post.
+/// </summary>
+/// <param name="UserId">UserId.</param>
+/// <param name="Id">Id.</param>
+/// <param name="Title">Title.</param>
+/// <param name="Body">Body.</param>
 public record Post(int UserId, int Id, string Title, string Body);

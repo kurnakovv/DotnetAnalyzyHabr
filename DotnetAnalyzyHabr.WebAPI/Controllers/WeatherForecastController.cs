@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetAnalyzyHabr.WebAPI.Controllers;
 
+/// <summary>
+/// Weather forecast.
+/// </summary>
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
@@ -12,61 +15,69 @@ public class WeatherForecastController : ControllerBase
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];
 
+    /// <summary>
+    /// Get weather forecast.
+    /// </summary>
+    /// <returns>weather forecast.</returns>
     [HttpGet("GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
         List<User> users = [];
 
-        //User item = users.FirstOrDefault(x => x.Name == "Vasia");
-        //var a = item.Name;
+        // User item = users.FirstOrDefault(x => x.Name == "Vasia");
+        // var a = item.Name;
 
-        //            switch (expression)
+        // switch (expression)
         //            {
-        //#pragma warning disable CS8602
+        // #pragma warning disable CS8602
         //                case x:
         //                    // ~5к строчек кода...
         //                    break;
-        //#pragma warning restore CS8602
+        // #pragma warning restore CS8602
         //                case y:
         //                    // ~5к строчек кода...
         //                    break;
-        //#pragma warning disable CS8602
+        // #pragma warning disable CS8602
         //                default:
         //                    // ~5к строчек кода...
         //                    break;
-        //#pragma warning disable CS8602
+        // #pragma warning disable CS8602
         //            }
 
-        //            var days = 2;
+        // var days = 2;
         //            switch (days)
         //            {
-        //#pragma warning disable CS8602
+        // #pragma warning disable CS8602
         //                case 1:
         //                    // ~5к строчек кода
         //                    User? item1 = users.FirstOrDefault(x => x.Name == "Vasia");
         //                    var a1 = item1.Name;
         //                    break;
-        //#pragma warning restore CS8602
+        // #pragma warning restore CS8602
         //                case 2:
         //                    // ~5к строчек кода
         //                    User item2 = users.FirstOrDefault(x => x.Name == "Vasia");
         //                    var a2 = item2.Name;
         //                    break;
-        //#pragma warning disable CS8602
+        // #pragma warning disable CS8602
         //                default:
         //                    // ~5к строчек кода
         //                    break;
-        //#pragma warning disable CS8602
+        // #pragma warning disable CS8602
         //            }
 
         return [.. Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
             TemperatureC = RandomNumberGenerator.GetInt32(-20, 55),
-            Summary = s_summaries[RandomNumberGenerator.GetInt32(s_summaries.Length)]
+            Summary = s_summaries[RandomNumberGenerator.GetInt32(s_summaries.Length)],
         })];
     }
 
+    /// <summary>
+    /// Get test weather forecast.
+    /// </summary>
+    /// <returns>test weather forecast.</returns>
     [HttpGet("GetTest")]
     public async Task<IEnumerable<WeatherForecast>> GetTest()
     {
@@ -78,12 +89,18 @@ public class WeatherForecastController : ControllerBase
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
             TemperatureC = RandomNumberGenerator.GetInt32(-20, 55),
-            Summary = s_summaries[RandomNumberGenerator.GetInt32(s_summaries.Length)]
+            Summary = s_summaries[RandomNumberGenerator.GetInt32(s_summaries.Length)],
         })];
     }
 }
 
+/// <summary>
+/// User.
+/// </summary>
 public class User
 {
+    /// <summary>
+    /// Name.
+    /// </summary>
     public required string Name { get; set; }
 }

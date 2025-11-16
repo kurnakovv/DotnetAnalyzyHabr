@@ -26,7 +26,7 @@ builder.Services.AddSingleton<IMyApiClient>(
 #pragma warning restore IDISP001 // Dispose created
 
         Uri baseUri = new("https://jsonplaceholder.typicode.com/");
-        //string accessToken = "your_access_token_here";
+        // string accessToken = "your_access_token_here";
 
         return new MyApiClient(httpClient, baseUri);
     }
