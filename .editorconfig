@@ -314,38 +314,38 @@ csharp_indent_case_contents_when_block = false
 # Rules that pertain to the naming of code elements. For example, you can specify that async method names must have an "Async" suffix.
 # https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/naming-rules
 
-dotnet_diagnostic.IDE1006.severity = default
+dotnet_diagnostic.IDE1006.severity = error
 
-# Asynchronous method ends with the word "Async"
+# Asynchronous methods must end with "Async"
 # Note: This rule does not work for interface methods, a better solution is https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1046
-dotnet_naming_rule.asynchronous_method_ends_with_the_word_async.severity = error
-dotnet_naming_rule.asynchronous_method_ends_with_the_word_async.symbols = async_methods
-dotnet_naming_rule.asynchronous_method_ends_with_the_word_async.style = async_ending
+dotnet_naming_rule.asynchronous_methods_must_end_with_async.severity = error
+dotnet_naming_rule.asynchronous_methods_must_end_with_async.symbols = async_methods
+dotnet_naming_rule.asynchronous_methods_must_end_with_async.style = async_method_style
 
 dotnet_naming_symbols.async_methods.applicable_kinds = method
 dotnet_naming_symbols.async_methods.required_modifiers = async
 dotnet_naming_symbols.async_methods.applicable_accessibilities = *
 
-dotnet_naming_style.async_ending.required_suffix = Async
-dotnet_naming_style.async_ending.capitalization = pascal_case
+dotnet_naming_style.async_method_style.required_suffix = Async
+dotnet_naming_style.async_method_style.capitalization = pascal_case
 
 
-# The interface must start with the letter "I"
-dotnet_naming_rule.interface_must_begins_with_I.severity = error
-dotnet_naming_rule.interface_must_begins_with_I.symbols = all_interfaces
-dotnet_naming_rule.interface_must_begins_with_I.style = begins_with_i
+# Interfaces must start with "I"
+dotnet_naming_rule.interfaces_must_start_with_I.severity = error
+dotnet_naming_rule.interfaces_must_start_with_I.symbols = interfaces
+dotnet_naming_rule.interfaces_must_start_with_I.style = interface_style
 
-dotnet_naming_symbols.all_interfaces.applicable_kinds = interface
-dotnet_naming_symbols.all_interfaces.applicable_accessibilities = *
+dotnet_naming_symbols.interfaces.applicable_kinds = interface
+dotnet_naming_symbols.interfaces.applicable_accessibilities = *
 
-dotnet_naming_style.begins_with_i.required_prefix = I
-dotnet_naming_style.begins_with_i.capitalization = pascal_case
+dotnet_naming_style.interface_style.required_prefix = I
+dotnet_naming_style.interface_style.capitalization = pascal_case
 
 
-# Constants are UPPERCASE
-dotnet_naming_rule.constants_should_be_upper_case.severity = error
-dotnet_naming_rule.constants_should_be_upper_case.symbols = constants
-dotnet_naming_rule.constants_should_be_upper_case.style = constant_style
+# Constants are UPPER_CASE
+dotnet_naming_rule.constants_are_upper_case.severity = error
+dotnet_naming_rule.constants_are_upper_case.symbols = constants
+dotnet_naming_rule.constants_are_upper_case.style = constant_style
 
 dotnet_naming_symbols.constants.applicable_kinds = field, local
 dotnet_naming_symbols.constants.required_modifiers = const
@@ -353,56 +353,69 @@ dotnet_naming_symbols.constants.required_modifiers = const
 dotnet_naming_style.constant_style.capitalization = all_upper
 
 
-# Instance fields are camelCase and start with _
-dotnet_naming_rule.instance_fields_should_be_camel_case_and_start_with_.severity = error
-dotnet_naming_rule.instance_fields_should_be_camel_case_and_start_with_.symbols = instance_fields
-dotnet_naming_rule.instance_fields_should_be_camel_case_and_start_with_.style = instance_field_style
+# Private instance fields are camelCase and start with "_"
+dotnet_naming_rule.private_instance_fields_are_camel_case_and_start_with_.severity = error
+dotnet_naming_rule.private_instance_fields_are_camel_case_and_start_with_.symbols = private_instance_fields
+dotnet_naming_rule.private_instance_fields_are_camel_case_and_start_with_.style = private_instance_field_style
 
-dotnet_naming_symbols.instance_fields.applicable_kinds = field
+dotnet_naming_symbols.private_instance_fields.applicable_kinds = field
+dotnet_naming_symbols.private_instance_fields.applicable_accessibilities = private
 
-dotnet_naming_style.instance_field_style.capitalization = camel_case
-dotnet_naming_style.instance_field_style.required_prefix = _
+dotnet_naming_style.private_instance_field_style.capitalization = camel_case
+dotnet_naming_style.private_instance_field_style.required_prefix = _
+
+
+# Static fields must start with "s_"
+dotnet_naming_rule.static_fields_must_start_with_s_.severity = error
+dotnet_naming_rule.static_fields_must_start_with_s_.symbols = static_fields
+dotnet_naming_rule.static_fields_must_start_with_s_.style = static_field_style
+
+dotnet_naming_symbols.static_fields.applicable_kinds = field
+dotnet_naming_symbols.static_fields.required_modifiers = static
+
+dotnet_naming_style.static_field_style.capitalization = camel_case
+dotnet_naming_style.static_field_style.required_prefix = s_
 
 
 # Locals and parameters are camelCase
-dotnet_naming_rule.locals_should_be_camel_case.severity = error
-dotnet_naming_rule.locals_should_be_camel_case.symbols = locals_and_parameters
-dotnet_naming_rule.locals_should_be_camel_case.style = camel_case_style
+dotnet_naming_rule.locals_are_camel_case.severity = error
+dotnet_naming_rule.locals_are_camel_case.symbols = locals_and_parameters
+dotnet_naming_rule.locals_are_camel_case.style = local_and_parameter_style
 
 dotnet_naming_symbols.locals_and_parameters.applicable_kinds = parameter, local
 
-dotnet_naming_style.camel_case_style.capitalization = camel_case
+dotnet_naming_style.local_and_parameter_style.capitalization = camel_case
 
 
 # Local functions are PascalCase
-dotnet_naming_rule.local_functions_should_be_pascal_case.severity = error
-dotnet_naming_rule.local_functions_should_be_pascal_case.symbols = local_functions
-dotnet_naming_rule.local_functions_should_be_pascal_case.style = local_function_style
+dotnet_naming_rule.local_functions_are_pascal_case.severity = error
+dotnet_naming_rule.local_functions_are_pascal_case.symbols = local_functions
+dotnet_naming_rule.local_functions_are_pascal_case.style = local_function_style
 
 dotnet_naming_symbols.local_functions.applicable_kinds = local_function
 
 dotnet_naming_style.local_function_style.capitalization = pascal_case
 
 
-# Generics Type Parameters use PascalCase and are prefixed with uppercase 'T' https://docs.microsoft.com/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces
-dotnet_naming_rule.type_parameter_rule.severity  = error
-dotnet_naming_rule.type_parameter_rule.symbols = type_parameter_group
-dotnet_naming_rule.type_parameter_rule.style = prefix_type_parameters_with_t_style
+# Generic Type parameters are PascalCase and start with "T"
+dotnet_naming_rule.generic_type_parameters_are_pascal_case_and_start_with_t.severity  = error
+dotnet_naming_rule.generic_type_parameters_are_pascal_case_and_start_with_t.symbols = generic_type_parameters
+dotnet_naming_rule.generic_type_parameters_are_pascal_case_and_start_with_t.style = generic_type_parameters_style
 
-dotnet_naming_symbols.type_parameter_group.applicable_kinds = type_parameter
+dotnet_naming_symbols.generic_type_parameters.applicable_kinds = type_parameter
 
-dotnet_naming_style.prefix_type_parameters_with_t_style.capitalization = pascal_case
-dotnet_naming_style.prefix_type_parameters_with_t_style.required_prefix = T
+dotnet_naming_style.generic_type_parameters_style.capitalization = pascal_case
+dotnet_naming_style.generic_type_parameters_style.required_prefix = T
 
 
-# By default, name items with PascalCase
-dotnet_naming_rule.members_should_be_pascal_case.severity = error
-dotnet_naming_rule.members_should_be_pascal_case.symbols = all_members
-dotnet_naming_rule.members_should_be_pascal_case.style = pascal_case_style
+# All members are PascalCase
+dotnet_naming_rule.all_members_are_pascal_case.severity = error
+dotnet_naming_rule.all_members_are_pascal_case.symbols = all_members
+dotnet_naming_rule.all_members_are_pascal_case.style = all_members_style
 
 dotnet_naming_symbols.all_members.applicable_kinds = *
 
-dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+dotnet_naming_style.all_members_style.capitalization = pascal_case
 
 
 

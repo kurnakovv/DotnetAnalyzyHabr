@@ -7,7 +7,7 @@ namespace DotnetAnalyzyHabr.WebAPI.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries =
+    private static readonly string[] s_summaries =
     [
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];
@@ -63,7 +63,7 @@ public class WeatherForecastController : ControllerBase
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
             TemperatureC = RandomNumberGenerator.GetInt32(-20, 55),
-            Summary = Summaries[RandomNumberGenerator.GetInt32(Summaries.Length)]
+            Summary = s_summaries[RandomNumberGenerator.GetInt32(s_summaries.Length)]
         })];
     }
 
@@ -78,7 +78,7 @@ public class WeatherForecastController : ControllerBase
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
             TemperatureC = RandomNumberGenerator.GetInt32(-20, 55),
-            Summary = Summaries[RandomNumberGenerator.GetInt32(Summaries.Length)]
+            Summary = s_summaries[RandomNumberGenerator.GetInt32(s_summaries.Length)]
         })];
     }
 }
