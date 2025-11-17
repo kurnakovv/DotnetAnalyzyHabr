@@ -1,10 +1,21 @@
-﻿namespace DotnetAnalyzyHabr.WebAPI.Services;
+﻿using System;
+
+namespace DotnetAnalyzyHabr.WebAPI.Services;
 
 public enum Foo
 {
     A = 0,
     B = 1,
     C = 2,
+}
+
+public enum Employee
+{
+    None = 0,
+    Developer = 1,
+    Manager = 2,
+    // CA1069: The enum member 'Tester' has the same constant value '2' as member 'Manager'
+    // Tester = 2,
 }
 
 public interface IUserService
@@ -40,6 +51,34 @@ public class UserService
     {
         return GetName();
     }
+
+    public void M(int i, int j)
+    {
+        if (i != 0)
+        {
+            return;
+        }
+
+        if (j != 0)
+        {
+            return;
+        }
+
+        // Куча логики...
+
+        // if (i != j)
+        // {
+        //     // Логика записи годового отчёта в БД...
+        // }
+
+        // Куча логики...
+    }
+
+    // public async Task DeleteAsync(long id, CancellationToken ct)
+    // {
+    //     await _userApi.DeleteAsync(id);
+    //     await _db.Users.Where(u => u.Id == id).ExecuteDeleteAsync();
+    // }
 }
 
 public class User
