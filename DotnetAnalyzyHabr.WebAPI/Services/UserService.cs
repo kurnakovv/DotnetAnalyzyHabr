@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DotnetAnalyzyHabr.WebAPI.Services;
+﻿namespace DotnetAnalyzyHabr.WebAPI.Services;
 
 public enum Foo
 {
