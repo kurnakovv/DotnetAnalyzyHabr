@@ -77,6 +77,31 @@ public class UserService
     //     await _userApi.DeleteAsync(id);
     //     await _db.Users.Where(u => u.Id == id).ExecuteDeleteAsync();
     // }
+
+    public void M2(int a)
+    {
+        if (a == 1)
+        {
+            throw new ArgumentException();
+        }
+
+        if (a == 2)
+        {
+            throw new ArgumentException();
+        }
+
+        // if (a == 3)
+        // {
+        //     throw new ArgumentException();
+        // }
+
+        if (a != 3)
+        {
+            return;
+        }
+
+        throw new ArgumentException();
+    }
 }
 
 public class User
