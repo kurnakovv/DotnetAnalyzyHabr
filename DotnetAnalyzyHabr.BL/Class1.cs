@@ -3,7 +3,4 @@
 /// <summary>
 /// Class1.
 /// </summary>
-public class Class1
-{
-
-}
+public class Class1;

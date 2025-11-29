@@ -1,0 +1,71 @@
+# Большая часть реализации была взята отсюда, спасибо большое этому человеку https://github.com/feeelin/sast-in-ci-example
+name: Build and PVS-Studio analysis
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  build-analyze:
+    runs-on: ubuntu-24.04
+    # Разрешаем экшину писать пойманные ошибки во вкладку "Security"
+    permissions:
+      security-events: write
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+
+        # Устанавливаем все необходимые инструменты и устанавливаем ключ, формата: "имя_ключа XXXX-XXXX-XXXX-XXXX"
+        # https://pvs-studio.com/en/docs/manual/6579/
+      - name: Install tools
+        run: |
+          wget -q -O - https://files.pvs-studio.com/etc/pubkey.txt \
+            | sudo apt-key add -
+          sudo wget -O /etc/apt/sources.list.d/viva64.list \
+            https://files.pvs-studio.com/etc/viva64.list
+          sudo add-apt-repository ppa:dotnet/backports
+          sudo apt update
+          sudo apt-get install -y dotnet-sdk-9.0
+          sudo apt install pvs-studio
+          sudo apt install pvs-studio-dotnet
+          pvs-studio-analyzer credentials ${{ secrets.PVS_STUDIO_CREDENTIALS }}
+
+      - name: Build
+        run: |
+          dotnet build DotnetAnalyzyHabr.sln
+
+      - name: Analyze
+        # Параметры https://pvs-studio.com/en/docs/manual/0035/
+        run: |
+          pvs-studio-dotnet \
+            --target DotnetAnalyzyHabr.sln \
+            --output ./DotnetAnalyzyHabrOutput.json -r \
+            --rulesConfig .config/.pvsconfig
+
+      - name: Convert report
+        # Если pvs studio поймал ошибки, то пайплайн упадет с ошибкой и не напишет отчет.
+        # Что бы этого избежать всегда пишем отчет, даже если предыдущие шаги упали (if: always())
+        if: always()
+
+        # Параметры https://pvs-studio.com/en/docs/manual/0038/
+        run: |
+          plog-converter DotnetAnalyzyHabrOutput.json \
+            --analyzer GA:1,2,3,4 \
+            --renderTypes json \
+            --name relative \
+            --pathTransformationMode toRelative \
+            --srcRoot $PWD
+
+          plog-converter relative.json \
+            --analyzer GA:1,2,3,4 \
+            --renderTypes sarif \
+            --name pvs-report \
+            --srcRoot file://
+
+      - name: Publish report
+        if: always()
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: pvs-report.sarif
+          category: PVS-Studio
